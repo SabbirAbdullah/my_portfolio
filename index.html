@@ -15,32 +15,67 @@
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
     <style>
+        
         .chart-container {
-            position: relative;
-    
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 60vh;
+        position: relative;
+        width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 300px; /* Reduced height */
+        max-height: 40vh; /* Reduced max-height */
+    }
+    @media (max-width: px) {
+        .chart-container {
+            height: 250px; /* Further reduced height for mobile */
+            max-height: 50vh; /* Further reduced max-height for mobile */
+        }
+    }
+    .filter-btn {
+        @apply px-2 py-2 rounded-sm text-sm font-medium transition-colors duration-200;
+    }
+    .filter-btn.active {
+        @apply bg-teal-600 text-white shadow-md dark:bg-teal-500 dark:text-gray-900 height: 2px;
+    }
+    .filter-btn:not(.active) {
+        @apply bg-stone-100 text-slate-700 hover:bg-stone-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
+    }
+    .theme-toggle {
+        @apply flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-600 hover:bg-stone-100 focus:outline-none dark:text-gray-400 dark:hover:text-teal-500 dark:hover:bg-gray-700;
+    }
+
+        /* Styles specifically for the logo within the header context */
+        .sabbir-name {
+            font-family: 'Arizonia', fantasy; /* Apply the stylish calligraphic font */
+            font-weight: 400; /* Bold */
+            font-size: 2.5rem; /* Adjusted for header context - you can fine-tune this */
+            color: #333; /* Dark gray color for the text */
+            line-height: 1; /* Adjust line height for better alignment */
+            margin-bottom: 0; /* Remove default margin */
+        }
+
+     
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 640px) {
+            .sabbir-name {
+                font-size: 2rem; /* Smaller font size on mobile */
+            }
             
         }
-        @media (max-width: 768px) {
-            .chart-container {
-                height: 350px;
-                max-height: 60vh;
-            }
-        }
-        .filter-btn {
-            @apply px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200;
-        }
-        .filter-btn.active {
-            @apply bg-teal-600 text-white shadow-md;
-        }
-        .filter-btn:not(.active) {
-            @apply bg-stone-100 text-slate-700 hover:bg-stone-600;
+
+        /* Generic header styling for demonstration purposes */
+        .header-demo {
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* To push logo to left and other elements to right */
         }
     </style>
 </head>
@@ -50,8 +85,15 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-extrabold text-slate-800 tracking-tight">Md Abdullah Kaisar Sabbir</a>
+            <!-- START: Sabbir's Portfolio Logo -->
+            <a href="#" class="flex items-center">
+            
+                <div>
+                    <h1 class="sabbir-name">Sabbir</h1>
                 </div>
+            </a>
+           
+        </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#hero" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
@@ -109,14 +151,12 @@
             </div>
         </section>
 
-
         <section id="about" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">About Me</h2>
-            <p class="text-lg text-slate-600 max-w-4xl mx-auto text-center">
-                With 1 year of professional experience in Flutter development, I specialize in bringing ideas to life through robust and user-friendly mobile applications. My journey in mobile development began with a fascination for creating seamless digital experiences that solve real-world problems. I thrive in collaborative environments, constantly learning new technologies, and refining my skills in Dart, state management, and API integration. I'm driven by a passion for clean code, elegant design, and delivering impactful products that delight users.
-            </p>
-        </section>
-
+    <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">About Me</h2>
+    <p class="text-lg text-slate-600 max-w-4xl mx-auto text-center">
+        With <span class="font-bold text-teal-600">1 year of professional experience</span> in <span class="font-bold text-teal-600">Flutter development</span>, I specialize in bringing ideas to life through <span class="font-bold">robust and user-friendly mobile applications</span>. My journey in mobile development began with a fascination for creating <span class="font-bold">seamless digital experiences</span> that solve <span class="font-bold">real-world problems</span>. I thrive in <span class="font-bold">collaborative environments</span>, constantly <span class="font-bold">learning new technologies</span>, and refining my skills in <span class="font-bold text-teal-600">Dart</span>, <span class="font-bold text-teal-600">state management</span>, and <span class="font-bold text-teal-600">API integration</span>. I'm driven by a passion for <span class="font-bold">clean code</span>, <span class="font-bold">elegant design</span>, and delivering <span class="font-bold">impactful products</span> that delight users.
+    </p>
+</section>
      
 
         <section id="skills" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
@@ -206,7 +246,7 @@
                     &#x1F310;
                 </a> -->
             </div>
-            <p class="mt-12 text-sm text-slate-500">&copy; 2025 Sabbir. All rights reserved.</p>
+           
         </footer>
     </main>
 
@@ -300,7 +340,7 @@
             const projectsData = [
                 {
                     name: 'E-commerce Mobile App',
-                    image: 'https://placehold.co/400x300/e0f2f7/0056b3?text=Shopping+App',
+                    image: 'https://github.com/user-attachments/assets/2ffc83a7-0ff0-43b5-8790-69f5245106b0?text=Shopping+App',
                     description: 'A full-featured e-commerce application allowing users to browse products, add to cart, and complete purchases. Includes user authentication and order history.',
                     categories: ['flutter', 'ecommerce'],
                     techStack: ['Flutter', 'Firebase', 'Provider', 'UI'],
@@ -309,7 +349,7 @@
                 },
                 {
                     name: 'My Gallery',
-                    image: 'https://placehold.co/400x300/e0f7f2/006a5e?text=My+Gallery',
+                    image: 'https://github.com/user-attachments/assets/ba738953-ade6-4ab7-9660-f643f7eda092?text=My+Gallery',
                     description: 'A real-time messaging application with user profiles, group chats, and multimedia sharing. Optimized for performance and smooth UI transitions.',
                     categories: ['flutter', 'backend'],
                     techStack: ['Flutter', 'Firebase', 'Getx', 'Animations'],
@@ -318,7 +358,7 @@
                 },
                 {
                     name: 'Tic Tac Toe Game',
-                    image: 'https://placehold.co/400x300/f7f2e0/8a6400?text=Tic+tac+Toe',
+                    image: 'https://github.com/user-attachments/assets/db0a6c9f-0629-4a84-a215-46e34ea4caab?text=Tic+tac+Toe',
                     description: 'An intuitive to build Tic Tac Toe game using getx for state management and custom written sizing class for screen specific sizes, with sound null safety, modularized code and better folder struct keeping best practices in mind!',
                     categories: ['flutter', 'uiux',"game", 'tic tac toe'],
                     techStack: ['Flutter', 'GetX', 'Custom Widgets',],
@@ -375,5 +415,6 @@
             renderProjects('all');
         });
     </script>
+     <p class="mt-12 text-sm text-slate-500 text-center">&copy; 2025 Sabbir. All rights reserved.</p>
 </body>
 </html>
