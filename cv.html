@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Abdullah Kaisar Sabbir</title>
+    <!-- Chosen Palette: Calm Harmony (Mainly a warm neutral background, with slate/stone for text and subtle teal accents for interactivity and highlights. Colors like: bg-stone-50, text-slate-700, bg-teal-600, text-teal-600, border-teal-600, hover:bg-teal-700, etc.) -->
+    <!-- Application Structure Plan: The site uses a "dashboard-like" single-page structure. It begins with a prominent Hero section acting as a dynamic introduction. A detailed About Me section provides personal context. The core interactive elements are the Skills visualization (interactive Chart.js bar chart for quick proficiency overview) and the Portfolio section. The Portfolio section is designed with category filters and dynamically rendered project cards, allowing users to explore work based on their interests. This structure was chosen to provide a quick overview, allow for deeper dives into specific areas (skills, projects), and enable non-linear exploration, which enhances usability for recruiters who often scan for specific information. Education and Contact sections provide essential details at the end. -->
+    <!-- Visualization & Content Choices: 
+    - Report Info: Personal branding, quick intro. -> Goal: Inform/Engage. -> Viz/Method: Hero section with prominent text and CTAs. -> Interaction: Scroll-to-section navigation. -> Justification: Creates an immediate, professional impression and guides user flow.
+    - Report Info: Technical skills and proficiency. -> Goal: Inform/Compare. -> Viz/Method: Horizontal Bar Chart (Chart.js/Canvas). -> Interaction: Hover tooltips for precise values, dynamic resizing. -> Justification: Provides a quick, visual summary of technical strengths, more digestible than a list.
+    - Report Info: Project details, types of work. -> Goal: Organize/Showcase. -> Viz/Method: Grid of project cards with dynamic filtering. -> Interaction: Clickable category buttons to filter projects; card hovers for subtle effects; direct links to external repos/demos. -> Justification: Allows users to quickly browse projects by category, making discovery efficient. Cards offer scannable summaries with immediate access to details.
+    - Report Info: Work experience details. -> Goal: Inform. -> Viz/Method: Standard descriptive text block. -> Interaction: None. -> Justification: Best for conveying sequential, detailed professional history.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 450px;
+            max-height: 50vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 60vh;
+            }
+        }
+        .filter-btn {
+            @apply px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200;
+        }
+        .filter-btn.active {
+            @apply bg-teal-600 text-white shadow-md;
+        }
+        .filter-btn:not(.active) {
+            @apply bg-stone-100 text-slate-700 hover:bg-stone-600;
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-slate-700 font-sans leading-relaxed">
+
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-extrabold text-slate-800 tracking-tight">Md Abdullah Kaisar Sabbir</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#hero" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                        <a href="#about" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">About</a>
+                        <a href="#skills" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                        <a href="#portfolio" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                        <a href="#experience" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                        <a href="#education" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Education</a>
+                        <a href="#contact" class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-600 hover:bg-stone-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#hero" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#skills" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+                <a href="#portfolio" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
+                <a href="#experience" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#education" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Education</a>
+                <a href="#contact" class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <section id="hero" class="scroll-mt-20 flex flex-col md:flex-row items-center justify-between bg-white p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-stone-50 to-teal-50 opacity-50 z-0 rounded-xl"></div>
+            <div class="relative z-10 text-center md:text-left md:w-3/5">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                    Hi, I'm <span class="text-teal-600">Sabbir</span>
+                </h1>
+                <p class="mt-4 text-xl text-slate-700 max-w-2xl mx-auto md:mx-0">
+                    A Flutter Mobile App Developer passionate about crafting beautiful, high-performance, and intuitive cross-platform applications.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                    <a href="#portfolio" class="inline-flex items-center justify-center gap-2 bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg shadow-md">
+                        View My Work →
+                    </a>
+                    <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-teal-600 text-teal-600 font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors text-lg shadow-md">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+            <div class="relative z-10 mt-8 md:mt-0 md:w-2/5 flex justify-center">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQF2qB11EqeiPg/profile-displayphoto-shrink_800_800/B56ZbyvR7oGgAc-/0/1747829204139?e=1755734400&v=beta&t=zeHPawn-U-FWH8O0HWpSKximTo-nb0hBHCNZ1D7EdH8" alt="Your Name - Profile Picture" class="rounded-full border-4 border-white shadow-xl w-48 h-48 object-cover">
+            </div>
+        </section>
+
+
+        <section id="about" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">About Me</h2>
+            <p class="text-lg text-slate-600 max-w-4xl mx-auto text-center">
+                With 1 year of professional experience in Flutter development, I specialize in bringing ideas to life through robust and user-friendly mobile applications. My journey in mobile development began with a fascination for creating seamless digital experiences that solve real-world problems. I thrive in collaborative environments, constantly learning new technologies, and refining my skills in Dart, state management, and API integration. I'm driven by a passion for clean code, elegant design, and delivering impactful products that delight users.
+            </p>
+        </section>
+
+     
+
+        <section id="skills" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2 text-center">Technical Skills & Proficiency</h2>
+            <p class="text-slate-600 mb-6 text-center">This interactive chart illustrates my core technical competencies and self-assessed proficiency levels based on practical application in various projects.</p>
+            <div class="chart-container">
+                <canvas id="skillsChart"></canvas>
+            </div>
+        </section>
+
+      
+
+        <section id="portfolio" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">My Portfolio</h2>
+            <p class="text-slate-600 mb-8 text-center">Explore a selection of my projects, categorized to help you quickly find what you're looking for. Each project showcases my ability to build intuitive and functional mobile applications.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button class="filter-btn active" data-category="all">All Projects</button>
+                <button class="filter-btn" data-category="flutter">Flutter Apps</button>
+                <button class="filter-btn" data-category="backend">Backend Integration</button>
+                <button class="filter-btn" data-category="uiux">UI/UX Focused</button>
+            </div>
+
+            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project cards will be dynamically inserted here -->
+            </div>
+        </section>
+
+       
+
+        <section id="experience" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Work Experience</h2>
+            <div class="flow-root">
+                <div class="bg-stone-50 p-6 rounded-lg shadow-inner">
+                    <h3 class="text-xl font-semibold text-slate-900">[mPair Technologies Ltd.]</h3>
+                    <p class="text-md font-medium text-teal-700">Chittagong, Bangladesh | Augest, 2024 – Present</p>
+                    <ul class="mt-4 space-y-3 list-disc list-inside text-slate-600">
+                        <li>Developed and maintained cross-platform mobile applications and customer-facing features using Flutter and Dart.</li>
+                        <li>Collaborated with UI/UX designers, backend developers, and product managers to translate requirements into functional and appealing mobile experiences.</li>
+                        <li>Implemented pixel-perfect user interfaces adhering to design specifications, ensuring responsiveness across various devices.</li>
+                        <li>Integrated RESTful APIs to connect mobile applications with backend services for data retrieval and submission.</li>
+                        <li>Managed application state effectively using Getx/BLoC/Riverpod.</li>
+                        <li>Performed debugging and testing to identify and resolve issues, ensuring application stability and performance.</li>
+                        <li>Optimized app performance, reducing load times by 20%.</li>
+                        <li>Contributed to the successful launch of Al Hasanain, ParkView Appointment, Family Planning which garnered thousands downloads/users.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    
+
+        <section id="education" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Education</h2>
+            <div class="bg-stone-50 p-6 rounded-lg shadow-inner">
+                <h3 class="text-xl font-semibold text-slate-900">B.Sc. in CSE</h3>
+                <p class="text-md font-medium text-teal-700">Port City International University, Chittagong, Bangladesh</p>
+                <p class="text-slate-500"> 2019 - 2023</p>
+                <!-- <p class="text-slate-600 mt-2">Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Mobile Application Development.</p> -->
+            </div>
+        </section>
+
+    
+
+        <footer id="contact" class="scroll-mt-20 mt-16 text-center bg-white p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-slate-800 mb-6">Get in Touch</h2>
+            <p class="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
+                Have a project in mind, a question, or just want to connect? Feel free to reach out to me via email or through my social profiles. I'm always open to new opportunities and collaborations.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+                <a href="mailto:sabbir.abdullah.dev@gmail.com" class="inline-flex items-center gap-2 bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-700 transition-colors shadow-md">
+                    <span class="text-xl">✉️</span> Email Me
+                </a>
+                <!-- <a href="#" class="inline-flex items-center gap-2 border border-slate-400 text-slate-700 font-semibold px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors shadow-md">
+                    <span class="text-xl">📞</span> 
+                </a> -->
+            </div>
+            <div class="mt-6 flex justify-center space-x-6">
+          <a href="https://www.linkedin.com/in/sabbir-abdullah/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
+            <img src="assets/linkedin.svg" alt="LinkedIn" width="32" height="32"></a>
+
+                </a>
+                <a href="https://github.com/SabbirAbdullah" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
+                    <img src="assets/github.svg" alt="GitHub" width="32" height="32">
+                </a>
+                 <!-- <a href="[Your Personal Website/Blog URL (Optional)]" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
+                    &#x1F310;
+                </a> -->
+            </div>
+            <p class="mt-12 text-sm text-slate-500">&copy; 2025 Sabbir. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Data for skills chart
+            const skillsData = {
+                labels: ['Dart', 'Flutter Framework', 'State Management', 'REST APIs', 'Firebase', 'UI/UX Design', 'MySQL', "Git & Version Control"],
+                datasets: [{
+                    label: 'Proficiency',
+                    data: [90, 95, 85, 90, 85, 90,80, 90], // Example proficiency percentages
+                    backgroundColor: 'rgba(13, 148, 136, 0.7)', 
+                    borderColor: 'rgba(15, 118, 110, 1)',
+                    borderWidth: 1,
+                    hoverBackgroundColor: 'rgba(13, 148, 136, 0.9)',
+                    hoverBorderColor: 'rgba(15, 118, 110, 1)',
+                }]
+            };
+
+            const skillsConfig = {
+                type: 'bar',
+                data: skillsData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                color: '#e2e8f0'
+                            },
+                            ticks: {
+                                color: '#475569'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Proficiency Level (%)',
+                                color: '#334155'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#334155',
+                                font: {
+                                    weight: '500'
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.x !== null) {
+                                        label += context.parsed.x + '%';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const skillsChartCtx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(skillsChartCtx, skillsConfig);
+
+            // Data for portfolio projects
+            const projectsData = [
+                {
+                    name: 'E-commerce Mobile App',
+                    image: 'https://placehold.co/400x300/e0f2f7/0056b3?text=Shopping+App',
+                    description: 'A full-featured e-commerce application allowing users to browse products, add to cart, and complete purchases. Includes user authentication and order history.',
+                    categories: ['flutter', 'ecommerce'],
+                    techStack: ['Flutter', 'Firebase', 'Provider', 'UI'],
+                    githubLink: 'https://github.com/SabbirAbdullah/shopping_app',
+             
+                },
+                {
+                    name: 'My Gallery',
+                    image: 'https://placehold.co/400x300/e0f7f2/006a5e?text=My+Gallery',
+                    description: 'A real-time messaging application with user profiles, group chats, and multimedia sharing. Optimized for performance and smooth UI transitions.',
+                    categories: ['flutter', 'backend'],
+                    techStack: ['Flutter', 'Firebase', 'Getx', 'Animations'],
+                    githubLink: 'https://github.com/SabbirAbdullah/my_gallery',
+                    
+                },
+                {
+                    name: 'Tic Tac Toe Game',
+                    image: 'https://placehold.co/400x300/f7f2e0/8a6400?text=Tic+tac+Toe',
+                    description: 'An intuitive to build Tic Tac Toe game using getx for state management and custom written sizing class for screen specific sizes, with sound null safety, modularized code and better folder struct keeping best practices in mind!',
+                    categories: ['flutter', 'uiux',"game", 'tic tac toe'],
+                    techStack: ['Flutter', 'GetX', 'Custom Widgets',],
+                    githubLink: 'https://github.com/SabbirAbdullah/tic_tac_toc',
+            
+                },
+             
+            ];
+
+            const projectsContainer = document.getElementById('projects-container');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            function renderProjects(filterCategory = 'all') {
+                projectsContainer.innerHTML = '';
+                const filteredProjects = projectsData.filter(project => 
+                    filterCategory === 'all' || project.categories.includes(filterCategory)
+                );
+
+                if (filteredProjects.length === 0) {
+                    projectsContainer.innerHTML = '<p class="text-center text-lg text-slate-500 col-span-full">No projects found for this category.</p>';
+                }
+
+                filteredProjects.forEach(project => {
+                    const projectCard = document.createElement('div');
+                    projectCard.className = 'bg-stone-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center';
+                    projectCard.innerHTML = `
+                        <img src="${project.image}" alt="${project.name} Mockup" class="w-full h-48 object-cover rounded-md mb-4 shadow-sm">
+                        <h3 class="text-xl font-semibold text-slate-900 mb-2">${project.name}</h3>
+                        <p class="text-slate-600 text-sm mb-4 flex-grow">${project.description}</p>
+                        <div class="flex flex-wrap justify-center gap-2 mb-4">
+                            ${project.techStack.map(tech => `<span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">${tech}</span>`).join('')}
+                        </div>
+                        <div class="flex flex-wrap justify-center gap-4 mt-auto">
+                            <a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" class="font-medium text-teal-600 hover:text-teal-800 flex items-center gap-1">
+                                Code <span class="text-sm">↗</span>
+                            </a>
+                            ${project.liveLink ? `<a href="${project.liveLink}" target="_blank" rel="noopener noreferrer" class="font-medium text-teal-600 hover:text-teal-800 flex items-center gap-1">
+                                Demo <span class="text-sm">↗</span>
+                            </a>` : ''}
+                        </div>
+                    `;
+                    projectsContainer.appendChild(projectCard);
+                });
+            }
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderProjects(button.dataset.category);
+                });
+            });
+
+            renderProjects('all');
+        });
+    </script>
+</body>
+</html>
