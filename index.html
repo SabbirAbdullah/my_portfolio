@@ -126,11 +126,6 @@
         .skill-icon-item span {
             @apply text-sm font-medium text-slate-700 dark:text-gray-200;
         }
-
-
-
-
-        
     </style>
 </head>
 
@@ -365,16 +360,34 @@
             // Data for skills chart
 
             const skillsData = [
-                { name: 'Dart', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
+
                 { name: 'Flutter', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
+                { name: 'Kotlin', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg' },
+                { name: 'Android', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg' },
+                { name: 'iOS', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg' },
+                { name: 'Dart', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
                 { name: 'Bloc', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9IiM1NWEzYmYiIGQ9Ik0yNy40MTcgNS41SDE4LjE5bC0yLjA4MyA0LjJINC41djE2LjhoMjV2LTIxWm0wIDQuMmgtOC4xMzVsMS4wOTEtMi4xaDcuMDQ0WiIvPjxwYXRoIGQ9Im0zMSAyNmwtOC41NzEgNWwtOC41NzItNVYxNmw4LjU3Mi01TDMxIDE2eiIvPjxwYXRoIGZpbGw9IiMwMDg0YzEiIGQ9Ik0xNS42MjQgMTcuMDcxTDIyLjQyOSAyMWw2LjgwNC0zLjkyOWwtNi44MDQtMy45Mjh6Ii8+PHBhdGggZmlsbD0iIzgyZWRkZiIgZD0iTTE1LjYyNCAxNy4wNzF2Ny44NThsNi44MDUgMy45MjhWMjF6Ii8+PHBhdGggZmlsbD0iIzAwZDNiOSIgZD0iTTIyLjQyOSAyOC44NTdWMjFsNi44MDQtMy45Mjl2Ny44NTh6Ii8+PC9zdmc+' },
                 { name: 'Getx', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiNjMDI2ZDMiIGQ9Ik0xMC42NDMuOTM0Yy0uMzAyLjA2Ny0uOTI4LjI5LTEuMzg2LjUwM2MtMi4xNjcgMS4wNS0zLjQ4NSAzLjUyLTMuMTUgNS44OTlhNS43NiA1Ljc2IDAgMCAwIDEuNTc1IDMuMjVjMS4xMjggMS4xNzQgMi40NjkgMS43MzIgNC4xMzQgMS43NDRjMS42NDIgMCAyLjk5NC0uNTcgNC4xMzMtMS43NDNDMTkuMzkgNyAxNy4wNTUgMS4xMTMgMTIuMDk1Ljg2N2MtLjQ5Mi0uMDIyLTEuMTQgMC0xLjQ1Mi4wNjdNMTMuNzcgMy4xN2MuOTA1LjMzNSAxLjk2NiAxLjM3NCAyLjE3OCAyLjE0NWMuMjEzLjc5My4xIDEuODItLjI5IDIuNTQ3Yy0uODYgMS41NzUtMi44MTYgMi43MjYtMy45ODkgMi4zNDZjLS41MzYtLjE3OS0xLjI1LS45OTQtMS42NDItMS44NTVjLS44NDctMS44ODktMS4xMjctMy41Mi0uNzM2LTQuMjhjLjU5Mi0xLjE1IDIuNzE1LTEuNTc1IDQuNDgtLjkwNFptLTkuNjYzIDguNjljLTIuODM4LjkxNi00LjUxMyAzLjU5OC00LjAyMiA2LjQ4Yy40OCAyLjg2IDMuMTczIDQuOTk0IDYuMDMzIDQuNzdjMi4wMzMtLjE0NSAzLjc2NS0xLjI0IDQuNjgxLTIuOTZjLjUwMy0uOTYuNjgxLTEuNjc2LjY4MS0yLjgxNWMwLTIuMDQ1LS45NzEtMy43OTktMi43MzctNC44OTRjLTEuMjQtLjc4Mi0zLjI1LTEuMDI4LTQuNjM2LS41OFptMi40MzYgMS43OTljMi43MzcuNDQ3IDQuMjIyIDIuNzM3IDMuMTUgNC44ODJjLS40MzYuODYtMS4zNTIgMS43MzItMi4yOSAyLjE3OWMtLjYzNy4yOS0uODM4LjMzNS0xLjQzLjI5Yy0xLjAyOC0uMDY3LTEuNDg2LS40OC0yLjA0NS0xLjg3N2MtLjY3LTEuNjQyLS45NS0zLjYwOC0uNjE0LTQuMjQ1Yy40MTMtLjc3MSAxLjExNy0xLjE2MiAyLjQxMy0xLjMzYy4wNjcgMCAuNDI0LjA0NS44MTYuMTAxbTkuODQyLTEuNzQzYy0zLjM0IDEuMTczLTQuODM3IDQuODgyLTMuMjczIDguMDc3Yy40MzUuODk0IDEuNDYzIDEuOTQ0IDIuMzggMi40MjVjMi4zNTYgMS4yNCA0LjkwNC44NzEgNi43OC0uOTk1YzMuMDUtMy4wMTYgMS45LTguMDc3LTIuMTc4LTkuNTA3Yy0xLjAzOS0uMzY4LTIuNjctLjM2OC0zLjcwOSAwbTMuNDE5IDEuOTc4YzEuMTg0LjM4IDIuMzY4IDEuNDg1IDIuNjM2IDIuNDhjLjE3OS42NTkuMDc4IDEuNjA5LS4yMjMgMi4yMzRjLS41NDggMS4xMjktMS45MSAyLjE0NS0zLjI1MSAyLjQxM2MtMS44MS4zNTgtMi43MzctLjg4Mi0zLjE1LTQuMTljLS4yNDctMS45OTkuMy0yLjkxNSAxLjkxLTMuMTZjLjY3LS4xMDEgMS4yNS0uMDQ2IDIuMDc4LjIyMyIvPjwvc3ZnPg==' },
                 { name: 'Firebase', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
                 { name: 'UI/UX Design', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
 
+
                 { name: 'Postman', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+PHBhdGggZmlsbD0iI2YzNzAzNiIgZD0iTTExMy4xMTcgMjYuMDY2QzkyLjE2OC0xLjA2MiA1My4xOTEtNi4wNyAyNi4wNjIgMTQuODgzYy0yNy4xMjUgMjAuOTUzLTMyLjEyOCA1OS45My0xMS4xNzUgODcuMDU1YzIwLjk1NyAyNy4xMjQgNTkuOTM3IDMyLjEyNCA4Ny4wNTggMTEuMTY3YzI3LjExNC0yMC45NTMgMzIuMTE4LTU5LjkxOCAxMS4xNzItODcuMDM5bTAgMCIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05MS4wNzggMjQuMTY0YTEwLjA0IDEwLjA0IDAgMCAwLTUuNzgxIDIuNDI2YTEwLjAzIDEwLjAzIDAgMCAwLTEuNTQgMTMuNDY1YTEwLjAzIDEwLjAzIDAgMCAwIDEzLjI3NiAyLjcxNWguMDAydi4wMDFsLjE1Ni4xNTVhMTAuNiAxMC42IDAgMCAwIDEuOTY1LTEuNDVBMTAuMzQgMTAuMzQgMCAwIDAgOTkgMjcuMTA3di0uMDAybC04Ljg0NCA4Ljc4OWwtLjE1Ni0uMTU1bDguODQ0LTguNzkzYTEwLjA0IDEwLjA0IDAgMCAwLTcuNzY2LTIuNzh6TTc5LjQzNCAzOC41NTFjLTQuMjQtLjAwNy0xMS4xNjMgNC43OTktMjguMDY3IDIxLjcwM2wuMDg0LjA4NmMtLjA5Mi0uMDMyLS4xODUtLjAzNS0uMTg1LS4wMzVsLTYuMzY0IDYuMzA4YTEuMDM1IDEuMDM1IDAgMCAwIC45MyAxLjc2MmwxMC45MTQtMi4zMjhhLjMuMyAwIDAgMCAuMDkyLS4xN2wuMjQyLjI1bC0zLjcyIDMuNjloLS4xOGwtMjIuMDg2IDIyLjI2bDcuMDg2IDYuODI0YTEuMjUgMS4yNSAwIDAgMCAxLjQ3Ni4xNDlhMS4zMyAxLjMzIDAgMCAwIC42NDUtMS4zNTZsLTEuMDM1LTQuNWEuNTMuNTMgMCAwIDEgMC0uNjJhMTE3LjMgMTE3LjMgMCAwIDAgMjYuNzM4LTE3LjU4M2wtNC41MzUtNC41MzdsLjA4Ni0uMDE0bC0yLjY5LTIuNjg5bC4xNzItLjE3NGwuMTgyLjE4NmwtLjA5NC4wOTFsNy4xMzcgNy4yOTN2LS4wMDNjMTMuNjgtMTIuOTU0IDIzLjM5LTIzLjM2NyAyMC44NjUtMzAuMzc1YTMuODMgMy44MyAwIDAgMC0xLjEwNy0yLjIwOHYuMDA0YTQgNCAwIDAgMC0uNDgzLS4zMDZjLS4wODMtLjA4OC0uMTU2LS4xNzgtLjI0NC0uMjY0bC0uMDY2LjA2NmE0IDQgMCAwIDAtLjU4Mi0uMjlsLjI4OS0uMjkyYy0xLjc5Ni0xLjYtMy4yOC0yLjkyNC01LjUtMi45M3pNMzAuOTQgOTIuMjFsLTUuMTcxIDUuMTcydi4wMDRhMS4wMyAxLjAzIDAgMCAwLS40NTcgMS4xMjVhMS4wMzUgMS4wMzUgMCAwIDAgLjkyMS43ODlsMTIuNjcyLjg3NXoiLz48cGF0aCBmaWxsPSIjZjM3MDM2IiBkPSJNOTEuOTUgMjMuMzFhMTEuMDUgMTEuMDUgMCAwIDAtNy43NTkgMy4xN2ExMC45OSAxMC45OSAwIDAgMC0yLjM5IDExLjY0MWMtNC43NDEtMi4wMy0xMS4xNTUgMS41MS0zMS4xMDYgMjEuNDU3YTEgMSAwIDAgMC0uMDM3LjA5NGExIDEgMCAwIDAtLjExOS4wNjJsLTYuMzA5IDYuMzY0YTEuOTcgMS45NyAwIDAgMC0uMzYzIDIuMzI0YTIuMDEgMi4wMSAwIDAgMCAxLjcwNy45ODRsLjMxMy0uMjAzbDguNDI0LTEuNzk3bC00LjAzIDQuMDY3YTEgMSAwIDAgMC0uMDU0LjE2NmwtMTkuNzUgMTkuNzk5YS44LjggMCAwIDAtLjE5Mi4yMzhsLTUuMDg2IDUuMDlhMS45NyAxLjk3IDAgMCAwLS40MTQgMi4wNDNhMiAyIDAgMCAwIDEuNjU2IDEuMjY1bDEyLjYxOC44OGExIDEgMCAwIDAgLjUyLS40MTVhLjg5Ljg5IDAgMCAwIDAtMS4wMzVsLS4wMjYtLjAyNWEyLjIgMi4yIDAgMCAwIC43MDUtLjU4YTIuMjQgMi4yNCAwIDAgMCAuNDA2LTEuODc2bC0uOTg0LTQuMTg3YTEyNi43IDEyNi43IDAgMCAwIDI2LjMzNC0xNi44NjFhMSAxIDAgMCAwIC4yNDguMTAzYy4yNTQtLjAxOS40OTItLjEyOC42NzItLjMwOGMxMy41NS0xMi44MyAyMS41MTUtMjEuNjIyIDIxLjUxNS0yOC42MDJhOCA4IDAgMCAwLS40MzEtMi44NWExMSAxMSAwIDAgMCAzLjg0NS44M2wtLjAxNS4wMDRhMTEuMiAxMS4yIDAgMCAwIDUuMTgzLTEuNDVsLjAwNC4wMDFhLjg0Ljg0IDAgMCAwIC42MTctLjA1NWE5LjQgOS40IDAgMCAwIDIuMDctMS42NTJhMTAuODcgMTAuODcgMCAwIDAgMy4yNTgtNy43NThhMTAuODcgMTAuODcgMCAwIDAtMy4yNTctNy43NThhMSAxIDAgMCAwLS4xMTgtLjA5MWExMS4wNSAxMS4wNSAwIDAgMC03LjY1Ni0zLjA3OHptLS4wODcgMS43NzJhOS4yNyA5LjI3IDAgMCAxIDUuNTg2IDEuOTE0bC04LjA2OCA4LjExN2ExIDEgMCAwIDAtLjA3Ni4wOThhLjgzLjgzIDAgMCAwLS4yMzkuNTVhLjgzLjgzIDAgMCAwIC4zMTMuNjVoLjAwMmw2LjEgNi4xYTkuMDQgOS4wNCAwIDAgMS0xMC4wMjgtMS45MTNjLTIuNTg2LTIuNi0zLjMzNi02LjUwNC0xLjk1My05Ljg5MWMxLjM4My0zLjM5IDQuNjgtNS42MDUgOC4zNjMtNS42MjVtNy4xMiAzLjQzMmE4Ljg3IDguODcgMCAwIDEgMi4wMzMgNS42NzRhOS4xNSA5LjE1IDAgMCAxLTIuNjg4IDYuNDY0YTEwIDEwIDAgMCAxLTEuMDk4Ljg5NUw5Mi4zMDcgMzYuN2wtLjk2My0uOTYzbC4yNjUtLjI2NWw3LjM3My02Ljk2em0tLjM2NiA0LjE5M2EuNzguNzggMCAwIDAtLjU1LjAzMWEuNzMuNzMgMCAwIDAtLjM2LjQyNmEuNzMuNzMgMCAwIDAgLjA1LjU1OWEyLjIzIDIuMjMgMCAwIDEtLjI1NyAyLjMyOGEuNjQuNjQgMCAwIDAtLjE5NS40ODhjLjAwNC4xODQuMDcuMzYuMTk1LjQ5MmEuNTguNTggMCAwIDAgLjQxNCAwYS42OC42OCAwIDAgMCAuNjcyLS4yMDdhMy41NyAzLjU3IDAgMCAwIC40NjUtMy43Nzd2LjAwNGEuNzguNzggMCAwIDAtLjQzNC0uMzQ0TTc5LjM0IDM5LjQzYTUuNiA1LjYgMCAwIDEgMy4zMSAxLjIyNmE0Ljc2IDQuNzYgMCAwIDAtMi42ODEgMS4zNEw1Ny4xNjIgNjQuNzAxbC00LjQ3Ni00LjQ3NmMxMS44MjgtMTEuNzcyIDE5LjA2LTE3LjkyMSAyMy41NTYtMTkuOTM2YTUuNiA1LjYgMCAwIDEgMy4wOTgtLjg2em0zLjk2NSAyLjk2YTIuOSAyLjkgMCAwIDEgMi4wNDMuODQ0YTIuOCAyLjggMCAwIDEgLjg3OSAyLjEyMWEyLjg3IDIuODcgMCAwIDEtLjk4NSAyLjA3bC0yNC4yNSAyMS4xMDZsLTIuNjE3LTIuNjE3bDIyLjg4Ny0yMi42OGEyLjkgMi45IDAgMCAxIDIuMDQzLS44NDN6bTIuOTk0IDYuNjk4Yy0xLjY5IDYuNzAyLTEwLjY0NyAxNS43ODMtMTkuOTg3IDI0LjYwN2wtMy43NzctMy43NzN6TTUxLjM2NyA2MS41NDdsLjI3NC4yN2wzLjUxMyAzLjUxM2wtOS42MyAyLjA2em01Ljc5MyA1Ljg0bC4wMDQuMDA0bDEuMTY4IDEuMTk1bC4wMTguMDg0bC4wNzguMDEybC4yNDguMjU0bC44Mi44NGwtNS4zODUuNjZ6bTMuODY3IDQuMDc2bDMuNTc4IDMuNTc2QTEyNyAxMjcgMCAwIDEgMzguNzUgOTEuNjk1YTEuNDQgMS40NCAwIDAgMC0uNzc3IDEuNjUzbDEuMDM1IDQuNWEuMzEuMzEgMCAwIDEgMCAuMzYzYS4zMS4zMSAwIDAgMS0uNDE0IDBsLTYuMTAyLTYuMTUyTDUxLjMgNzIuOTc1em0tMjkuOTMzIDIxLjk0bC44NjkuODE0bDQuNDkyIDQuNDkybC0xMC4wMTYtLjY0OGw0LjY1NS00LjY1OXoiLz48L3N2Zz4=' },
                 { name: 'MySQL', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
-                { name: 'Git & Version Control', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' }
+                { name: 'Git & Version Control', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+                {
+                    name: 'Android Studio',
+                    imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg'
+                },
+                {
+                    name: 'VS Code',
+                    imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg'
+                },
+                {
+                    name: 'Xcode',
+                    imageUrl: 'https://img.icons8.com/color/480/xcode.png'
+                },
+
             ];
 
             function renderSkills(containerElement) {
