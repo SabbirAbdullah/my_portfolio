@@ -1,28 +1,33 @@
-/* Base */
-body, html {
+/* ----------------------- */
+/* Base Styles             */
+/* ----------------------- */
+html, body {
   scroll-behavior: smooth;
 }
-/* body {
-  background: linear-gradient(135deg, #0c1530, #1b0a27, #2c5364); 
-  color: #f0f0f0; 
-  min-height: 100vh;
-} */
+
 body {
   background: linear-gradient(135deg, #0f112f, #101c2e, #0e2732);
   min-height: 100vh;
   color: #f0f0f0;
+  font-smoothing: antialiased;
 }
 
+/* ----------------------- */
+/* Hover Effects           */
+/* ----------------------- */
 .skill-item:hover,
 .project-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: scale(1.06);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* Reveal Animations */
+/* ----------------------- */
+/* Reveal Animation        */
+/* ----------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(45px);
   transition: all 0.6s ease-out;
 }
 .reveal.is-visible {
@@ -30,22 +35,28 @@ body {
   transform: translateY(0);
 }
 
-/* Buttons */
+/* ----------------------- */
+/* Primary Button          */
+/* ----------------------- */
 .btn-primary {
   background: linear-gradient(to right, #14b8a6, #0f766e);
   color: #fff;
   font-weight: 600;
-  transition: transform 0.2s, box-shadow 0.25s;
+  padding: 0.6rem 1.3rem;
+  border-radius: 0.6rem;
+  transition: transform .2s ease, box-shadow .25s ease;
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(20,184,166,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(20,184,166,0.35);
 }
 
-/* Project Card */
+/* ----------------------- */
+/* Horizontal Cards Slider */
+/* ----------------------- */
 #projects-container {
   display: flex;
-  gap: 1rem; /* spacing between cards */
+  gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -53,63 +64,97 @@ body {
 }
 
 .project-card {
-  min-width: 280px;   /* card width on mobile */
-  max-width: 320px;
-  flex: 0 0 auto;     /* prevent shrinking */
+  min-width: 280px;
+  max-width: 330px;
+  flex: 0 0 auto;
   scroll-snap-align: start;
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
+  transition: transform .3s ease, box-shadow .3s ease;
 }
 
+/* Scrollbar */
 #projects-container::-webkit-scrollbar {
   height: 6px;
 }
-
 #projects-container::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
 }
-
 #projects-container::-webkit-scrollbar-track {
   background: transparent;
 }
 
-
-
-/* Skills Icons */
+/* ----------------------- */
+/* Skills Icons            */
+/* ----------------------- */
 .skill-item {
-  background: rgba(15,23,42,0.7);
-  padding: 0.75rem;
+  background: rgba(15,23,42,0.75);
+  padding: 0.8rem;
   border-radius: 0.75rem;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform .3s ease, filter .3s ease;
 }
 .skill-item:hover {
-  transform: scale(1.15) rotate(-6deg);
-  filter: drop-shadow(0 6px 18px rgba(20,184,166,0.25));
+  transform: scale(1.18) rotate(-4deg);
+  filter: drop-shadow(0 6px 20px rgba(20,184,166,0.3));
 }
 
-/* Headings */
+/* ----------------------- */
+/* Headings                */
+/* ----------------------- */
 h2 {
   color: #14b8a6;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.55);
 }
 
-/* Chart.js Container */
+/* ----------------------- */
+/* Chart Container         */
+/* ----------------------- */
 .chart-wrap {
   position: relative;
   height: 320px;
 }
 
-/* Footer Links Hover */
+/* ----------------------- */
+/* Footer Links            */
+/* ----------------------- */
 footer a:hover {
   color: #0d9488;
+  transition: color .2s ease;
 }
 
-/* Mobile Menu */
+/* ----------------------- */
+/* Mobile Menu             */
+/* ----------------------- */
 #mobile-menu {
-  transition: max-height 0.3s ease;
+  transition: max-height .3s ease;
 }
 
-/* Active Filter Button */
+/* ----------------------- */
+/* Active Filter Button    */
+/* ----------------------- */
 .filter-btn.active {
   background-color: #14b8a6 !important;
   color: #fff !important;
+}
+
+/* ----------------------- */
+/* Responsive Improvements */
+/* ----------------------- */
+@media (min-width: 768px) {
+  #projects-container {
+    gap: 1.5rem;
+  }
+  .project-card {
+    min-width: 320px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #projects-container {
+    gap: 2rem;
+  }
+  .project-card {
+    min-width: 360px;
+  }
 }
