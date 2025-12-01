@@ -10,10 +10,9 @@
   "dependencies": {
     "chart.js": "^4.5.1"
   },
-"devDependencies": {
-  "autoprefixer": "^10.4.14",
-  "postcss": "^8.4.21",
-  "vite": "^5.0.0"
-}
-
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "vite": "^7.2.6"
+  }
 }
