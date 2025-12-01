@@ -1,572 +1,175 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en" class="dark scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md Abdullah Kaisar Sabbir</title>
-    <!-- Chosen Palette: Calm Harmony (Mainly a warm neutral background, with slate/stone for text and subtle teal accents for interactivity and highlights. Colors like: bg-stone-50, text-slate-700, bg-teal-600, text-teal-600, border-teal-600, hover:bg-teal-700, etc.) -->
-    <!-- Application Structure Plan: The site uses a "dashboard-like" single-page structure. It begins with a prominent Hero section acting as a dynamic introduction. A detailed About Me section provides personal context. The core interactive elements are the Skills visualization (interactive Chart.js bar chart for quick proficiency overview) and the Portfolio section. The Portfolio section is designed with category filters and dynamically rendered project cards, allowing users to explore work based on their interests. This structure was chosen to provide a quick overview, allow for deeper dives into specific areas (skills, projects), and enable non-linear exploration, which enhances usability for recruiters who often scan for specific information. Education and Contact sections provide essential details at the end. -->
-    <!-- Visualization & Content Choices: 
-    - Report Info: Personal branding, quick intro. -> Goal: Inform/Engage. -> Viz/Method: Hero section with prominent text and CTAs. -> Interaction: Scroll-to-section navigation. -> Justification: Creates an immediate, professional impression and guides user flow.
-    - Report Info: Technical skills and proficiency. -> Goal: Inform/Compare. -> Viz/Method: Horizontal Bar Chart (Chart.js/Canvas). -> Interaction: Hover tooltips for precise values, dynamic resizing. -> Justification: Provides a quick, visual summary of technical strengths, more digestible than a list.
-    - Report Info: Project details, types of work. -> Goal: Organize/Showcase. -> Viz/Method: Grid of project cards with dynamic filtering. -> Interaction: Clickable category buttons to filter projects; card hovers for subtle effects; direct links to external repos/demos. -> Justification: Allows users to quickly browse projects by category, making discovery efficient. Cards offer scannable summaries with immediate access to details.
-    - Report Info: Work experience details. -> Goal: Inform. -> Viz/Method: Standard descriptive text block. -> Interaction: None. -> Justification: Best for conveying sequential, detailed professional history.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Arizonia&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Abdullah Kaisar Sabbir — Portfolio</title>
 
-    <style>
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            /* Reduced height */
-            max-height: 40vh;
-            /* Reduced max-height */
-        }
-
-        @media (max-width: px) {
-            .chart-container {
-                height: 250px;
-                /* Further reduced height for mobile */
-                max-height: 50vh;
-                /* Further reduced max-height for mobile */
-            }
-        }
-
-        .filter-btn {
-            @apply px-2 py-2 rounded-sm text-sm font-medium transition-colors duration-200;
-        }
-
-        .filter-btn.active {
-            @apply bg-teal-600 text-white shadow-md dark:bg-teal-500 dark:text-gray-900 height: 2px;
-        }
-
-        .filter-btn:not(.active) {
-            @apply bg-stone-100 text-slate-700 hover:bg-stone-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
-        }
-
-        .theme-toggle {
-            @apply flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-600 hover:bg-stone-100 focus:outline-none dark:text-gray-400 dark:hover:text-teal-500 dark:hover:bg-gray-700;
-        }
-
-        /* Styles specifically for the logo within the header context */
-        .sabbir-name {
-            font-family: 'Arizonia', fantasy;
-            /* Apply the stylish calligraphic font */
-            font-weight: 400;
-            /* Bold */
-            font-size: 2.5rem;
-            /* Adjusted for header context - you can fine-tune this */
-            color: #333;
-            /* Dark gray color for the text */
-            line-height: 1;
-            /* Adjust line height for better alignment */
-            margin-bottom: 0;
-            /* Remove default margin */
-        }
-
-
-        /* Responsive adjustments for smaller screens */
-        @media (max-width: 640px) {
-            .sabbir-name {
-                font-size: 2rem;
-                /* Smaller font size on mobile */
-            }
-
-        }
-
-        /* Generic header styling for demonstration purposes */
-        .header-demo {
-            width: 100%;
-            padding: 1rem 2rem;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            /* To push logo to left and other elements to right */
-        }
-
-        .skill-icon-item {
-            /* hover:scale-110 class now handles the movement directly via Tailwind */
-            @apply flex flex-col items-center justify-center space-y-2 p-4 rounded-xl transition-transform duration-200 hover:scale-110 cursor-pointer;
-            min-width: 80px;
-        }
-
-        .skill-icon-item img {
-            @apply w-12 object-contain transition-transform duration-300 ease-in-out;
-            height: 48px !important;
-        }
-
-        .skill-icon-item:hover img {
-            transform: rotate(10deg) scale(1.2);
-        }
-
-        .skill-icon-item:hover span {
-            color: #0d9488;
-            /* Tailwind teal-600 */
-        }
-
-
-        .skill-icon-item img {
-            @apply w-12 object-contain;
-            /* w-12 is 48px, object-contain ensures image scales within bounds */
-            height: 48px !important;
-            /* Explicitly fixed height */
-        }
-
-        .skill-icon-item span {
-            @apply text-sm font-medium text-slate-700 dark:text-gray-200;
-        }
-    </style>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Dancing+Script:wght@700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-slate-900 text-slate-100 font-sans leading-relaxed">
 
-<body class="bg-stone-100 text-slate-700 font-sans leading-relaxed">
-
-    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <!-- START: Sabbir's Portfolio Logo -->
-                    <a href="#" class="flex items-center">
-
-                        <div>
-                            <h1 class="sabbir-name">Sabbir</h1>
-                        </div>
-                    </a>
-
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#hero"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#about"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">About</a>
-                        <a href="#skills"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                        <a href="#portfolio"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                        <a href="#experience"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                        <a href="#education"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Education</a>
-                        <a href="#contact"
-                            class="text-slate-600 hover:text-teal-600 px-3 py-2 rounded-md text-base font-medium">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-teal-600 hover:bg-stone-100 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <span class="text-2xl">☰</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <div id="mobile-menu" class="md:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#hero"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-                <a href="#about"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#skills"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#portfolio"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
-                <a href="#experience"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
-                <a href="#education"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Education</a>
-                <a href="#contact"
-                    class="text-slate-600 hover:text-teal-600 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <section id="hero"
-            class="scroll-mt-20 flex flex-col md:flex-row items-center justify-between bg-white p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-stone-50 to-teal-50 opacity-50 z-0 rounded-xl"></div>
-            <div class="relative z-10 text-center md:text-left md:w-3/5">
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
-                    Hi, I'm <span class="text-teal-600">Sabbir</span>
-                </h1>
-                <p class="mt-4 text-xl text-slate-700 max-w-2xl mx-auto md:mx-0">
-                    A Flutter Mobile App Developer passionate about crafting beautiful, high-performance, and intuitive
-                    cross-platform applications.
-                </p>
-                <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                    <a href="#portfolio"
-                        class="inline-flex items-center justify-center gap-2 bg-teal-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors text-lg shadow-md">
-                        View My Work →
-                    </a>
-                    <a href="#contact"
-                        class="inline-flex items-center justify-center gap-2 border border-teal-600 text-teal-600 font-semibold px-6 py-3 rounded-lg hover:bg-teal-50 transition-colors text-lg shadow-md">
-                        Get in Touch
-                    </a>
-                </div>
-            </div>
-            <div class="relative z-10 mt-8 md:mt-0 md:w-2/5 flex justify-center">
-                <img src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg"
-                    alt="Sabbir - Profile Picture"
-                    class="rounded-full border-4 border-white shadow-xl w-48 h-48 object-cover">
-            </div>
-        </section>
-
-        <section id="about" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">About Me</h2>
-            <p class="text-lg text-slate-600 max-w-4xl mx-auto text-center">
-                With <span class="font-bold text-teal-600">1.5 year of professional experience</span> in <span
-                    class="font-bsold text-teal-600">Flutter development</span>, I specialize in bringing ideas to life
-                through <span class="font-bold">robust and user-friendly mobile applications</span>. My journey in
-                mobile development began with a fascination for creating <span class="font-bold">seamless digital
-                    experiences</span> that solve <span class="font-bold">real-world problems</span>. I thrive in <span
-                    class="font-bold">collaborative environments</span>, constantly <span class="font-bold">learning new
-                    technologies</span>, and refining my skills in <span class="font-bold text-teal-600">Dart</span>,
-                <span class="font-bold text-teal-600">state management</span>, and <span
-                    class="font-bold text-teal-600">API integration</span>. I'm driven by a passion for <span
-                    class="font-bold">clean code</span>, <span class="font-bold">elegant design</span>, and delivering
-                <span class="font-bold">impactful products</span> that delight users.
-            </p>
-        </section>
-
-
-
-        <section id="skills"
-            class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm transition-colors duration-300 white:bg-gray-800">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Technical Skills</h2>
-            <p class="text-slate-600 mb-8 text-center">A visual representation of my core technical competencies,
-                showcasing my expertise in various tools and technologies.</p>
-            <div class="flex flex-wrap justify-center gap-6 py-4">
-                <!-- Skills will be dynamically populated here -->
-            </div>
-        </section>
-
-
-
-
-        <section id="portfolio" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">My Portfolio</h2>
-            <p class="text-slate-600 mb-8 text-center">Explore a selection of my projects, categorized to help you
-                quickly find what you're looking for. Each project showcases my ability to build intuitive and
-                functional mobile applications.</p>
-
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <button class="filter-btn active" data-category="all">All Projects</button>
-                <button class="filter-btn" data-category="flutter">Flutter Apps</button>
-                <button class="filter-btn" data-category="backend">Backend Integration</button>
-                <button class="filter-btn" data-category="uiux">UI/UX Focused</button>
-            </div>
-
-            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project cards will be dynamically inserted here -->
-            </div>
-        </section>
-
-
-
-        <section id="experience" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Work Experience</h2>
-            <div class="flow-root">
-                <div class="bg-stone-50 p-6 rounded-lg shadow-inner">
-                    <h3 class="text-xl font-semibold text-slate-900">mPair Technologies Ltd.</h3>
-                    <p class="text-md font-medium text-teal-700">Chittagong, Bangladesh | Augest, 2024 – Present</p>
-                    <ul class="mt-4 space-y-3 list-disc list-inside text-slate-600">
-                        <li>Developed and maintained cross-platform mobile applications and customer-facing features
-                            using Flutter and Dart.</li>
-                        <li>Collaborated with UI/UX designers, backend developers, and product managers to translate
-                            requirements into functional and appealing mobile experiences.</li>
-                        <li>Implemented pixel-perfect user interfaces adhering to design specifications, ensuring
-                            responsiveness across various devices.</li>
-                        <li>Integrated RESTful APIs to connect mobile applications with backend services for data
-                            retrieval and submission.</li>
-                        <li>Managed application state effectively using Getx/BLoC/Riverpod.</li>
-                        <li>Performed debugging and testing to identify and resolve issues, ensuring application
-                            stability and performance.</li>
-                        <li>Optimized app performance.</li>
-                        <li>Contributed to the successful launch of Al Hasanain, ParkView Appointment, Family Planning
-                            which garnered thousands downloads/users.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-
-
-        <section id="education" class="scroll-mt-20 mt-12 bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 text-center">Education</h2>
-            <div class="bg-stone-50 p-6 rounded-lg shadow-inner">
-                <h3 class="text-xl font-semibold text-slate-900">B.Sc. in CSE</h3>
-                <p class="text-md font-medium text-teal-700">Port City International University, Chittagong, Bangladesh
-                </p>
-                <p class="text-slate-500"> 2019 - 2023</p>
-                <!-- <p class="text-slate-600 mt-2">Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Mobile Application Development.</p> -->
-            </div>
-        </section>
-
-
-
-        <footer id="contact" class="scroll-mt-20 mt-16 text-center bg-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-3xl font-bold text-slate-800 mb-6">Get in Touch</h2>
-            <p class="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
-                Have a project in mind, a question, or just want to connect? Feel free to reach out to me via email or
-                through my social profiles. I'm always open to new opportunities and collaborations.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-                <a href="mailto:sabbir.abdullah.dev@gmail.com"
-                    class="inline-flex items-center gap-2 bg-teal-600 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-teal-700 transition-colors shadow-md">
-                    <span class="text-xl">✉️</span> Email Me
-                </a>
-                <!-- <a href="#" class="inline-flex items-center gap-2 border border-slate-400 text-slate-700 font-semibold px-5 py-2.5 rounded-lg hover:bg-slate-100 transition-colors shadow-md">
-                    <span class="text-xl">📞</span> 
-                </a> -->
-            </div>
-            <div class="mt-6 flex justify-center space-x-6">
-                <a href="https://www.linkedin.com/in/sabbir-abdullah/" target="_blank" rel="noopener noreferrer"
-                    class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
-                    <img src="assets/linkedin.svg" alt="LinkedIn" width="32" height="32"></a>
-
-                </a>
-                <a href="https://github.com/SabbirAbdullah" target="_blank" rel="noopener noreferrer"
-                    class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
-                    <img src="assets/github.svg" alt="GitHub" width="32" height="32">
-                </a>
-                <!-- <a href="[Your Personal Website/Blog URL (Optional)]" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-teal-600 transition-colors text-4xl">
-                    &#x1F310;
-                </a> -->
-            </div>
-
-        </footer>
-    </main>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Data for skills chart
-
-            const skillsData = [
-
-                { name: 'Flutter', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
-                { name: 'Kotlin', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg' },
-                { name: 'Android', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg' },
-                { name: 'iOS', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg' },
-                { name: 'Dart', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
-                { name: 'Bloc', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMzIgMzIiPjxwYXRoIGZpbGw9IiM1NWEzYmYiIGQ9Ik0yNy40MTcgNS41SDE4LjE5bC0yLjA4MyA0LjJINC41djE2LjhoMjV2LTIxWm0wIDQuMmgtOC4xMzVsMS4wOTEtMi4xaDcuMDQ0WiIvPjxwYXRoIGQ9Im0zMSAyNmwtOC41NzEgNWwtOC41NzItNVYxNmw4LjU3Mi01TDMxIDE2eiIvPjxwYXRoIGZpbGw9IiMwMDg0YzEiIGQ9Ik0xNS42MjQgMTcuMDcxTDIyLjQyOSAyMWw2LjgwNC0zLjkyOWwtNi44MDQtMy45Mjh6Ii8+PHBhdGggZmlsbD0iIzgyZWRkZiIgZD0iTTE1LjYyNCAxNy4wNzF2Ny44NThsNi44MDUgMy45MjhWMjF6Ii8+PHBhdGggZmlsbD0iIzAwZDNiOSIgZD0iTTIyLjQyOSAyOC44NTdWMjFsNi44MDQtMy45Mjl2Ny44NTh6Ii8+PC9zdmc+' },
-                { name: 'Getx', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiNjMDI2ZDMiIGQ9Ik0xMC42NDMuOTM0Yy0uMzAyLjA2Ny0uOTI4LjI5LTEuMzg2LjUwM2MtMi4xNjcgMS4wNS0zLjQ4NSAzLjUyLTMuMTUgNS44OTlhNS43NiA1Ljc2IDAgMCAwIDEuNTc1IDMuMjVjMS4xMjggMS4xNzQgMi40NjkgMS43MzIgNC4xMzQgMS43NDRjMS42NDIgMCAyLjk5NC0uNTcgNC4xMzMtMS43NDNDMTkuMzkgNyAxNy4wNTUgMS4xMTMgMTIuMDk1Ljg2N2MtLjQ5Mi0uMDIyLTEuMTQgMC0xLjQ1Mi4wNjdNMTMuNzcgMy4xN2MuOTA1LjMzNSAxLjk2NiAxLjM3NCAyLjE3OCAyLjE0NWMuMjEzLjc5My4xIDEuODItLjI5IDIuNTQ3Yy0uODYgMS41NzUtMi44MTYgMi43MjYtMy45ODkgMi4zNDZjLS41MzYtLjE3OS0xLjI1LS45OTQtMS42NDItMS44NTVjLS44NDctMS44ODktMS4xMjctMy41Mi0uNzM2LTQuMjhjLjU5Mi0xLjE1IDIuNzE1LTEuNTc1IDQuNDgtLjkwNFptLTkuNjYzIDguNjljLTIuODM4LjkxNi00LjUxMyAzLjU5OC00LjAyMiA2LjQ4Yy40OCAyLjg2IDMuMTczIDQuOTk0IDYuMDMzIDQuNzdjMi4wMzMtLjE0NSAzLjc2NS0xLjI0IDQuNjgxLTIuOTZjLjUwMy0uOTYuNjgxLTEuNjc2LjY4MS0yLjgxNWMwLTIuMDQ1LS45NzEtMy43OTktMi43MzctNC44OTRjLTEuMjQtLjc4Mi0zLjI1LTEuMDI4LTQuNjM2LS41OFptMi40MzYgMS43OTljMi43MzcuNDQ3IDQuMjIyIDIuNzM3IDMuMTUgNC44ODJjLS40MzYuODYtMS4zNTIgMS43MzItMi4yOSAyLjE3OWMtLjYzNy4yOS0uODM4LjMzNS0xLjQzLjI5Yy0xLjAyOC0uMDY3LTEuNDg2LS40OC0yLjA0NS0xLjg3N2MtLjY3LTEuNjQyLS45NS0zLjYwOC0uNjE0LTQuMjQ1Yy40MTMtLjc3MSAxLjExNy0xLjE2MiAyLjQxMy0xLjMzYy4wNjcgMCAuNDI0LjA0NS44MTYuMTAxbTkuODQyLTEuNzQzYy0zLjM0IDEuMTczLTQuODM3IDQuODgyLTMuMjczIDguMDc3Yy40MzUuODk0IDEuNDYzIDEuOTQ0IDIuMzggMi40MjVjMi4zNTYgMS4yNCA0LjkwNC44NzEgNi43OC0uOTk1YzMuMDUtMy4wMTYgMS45LTguMDc3LTIuMTc4LTkuNTA3Yy0xLjAzOS0uMzY4LTIuNjctLjM2OC0zLjcwOSAwbTMuNDE5IDEuOTc4YzEuMTg0LjM4IDIuMzY4IDEuNDg1IDIuNjM2IDIuNDhjLjE3OS42NTkuMDc4IDEuNjA5LS4yMjMgMi4yMzRjLS41NDggMS4xMjktMS45MSAyLjE0NS0zLjI1MSAyLjQxM2MtMS44MS4zNTgtMi43MzctLjg4Mi0zLjE1LTQuMTljLS4yNDctMS45OTkuMy0yLjkxNSAxLjkxLTMuMTZjLjY3LS4xMDEgMS4yNS0uMDQ2IDIuMDc4LjIyMyIvPjwvc3ZnPg==' },
-                { name: 'Firebase', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' },
-                { name: 'UI/UX Design', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
-
-
-                { name: 'Postman', imageUrl: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iMTI4IiB2aWV3Qm94PSIwIDAgMTI4IDEyOCI+PHBhdGggZmlsbD0iI2YzNzAzNiIgZD0iTTExMy4xMTcgMjYuMDY2QzkyLjE2OC0xLjA2MiA1My4xOTEtNi4wNyAyNi4wNjIgMTQuODgzYy0yNy4xMjUgMjAuOTUzLTMyLjEyOCA1OS45My0xMS4xNzUgODcuMDU1YzIwLjk1NyAyNy4xMjQgNTkuOTM3IDMyLjEyNCA4Ny4wNTggMTEuMTY3YzI3LjExNC0yMC45NTMgMzIuMTE4LTU5LjkxOCAxMS4xNzItODcuMDM5bTAgMCIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik05MS4wNzggMjQuMTY0YTEwLjA0IDEwLjA0IDAgMCAwLTUuNzgxIDIuNDI2YTEwLjAzIDEwLjAzIDAgMCAwLTEuNTQgMTMuNDY1YTEwLjAzIDEwLjAzIDAgMCAwIDEzLjI3NiAyLjcxNWguMDAydi4wMDFsLjE1Ni4xNTVhMTAuNiAxMC42IDAgMCAwIDEuOTY1LTEuNDVBMTAuMzQgMTAuMzQgMCAwIDAgOTkgMjcuMTA3di0uMDAybC04Ljg0NCA4Ljc4OWwtLjE1Ni0uMTU1bDguODQ0LTguNzkzYTEwLjA0IDEwLjA0IDAgMCAwLTcuNzY2LTIuNzh6TTc5LjQzNCAzOC41NTFjLTQuMjQtLjAwNy0xMS4xNjMgNC43OTktMjguMDY3IDIxLjcwM2wuMDg0LjA4NmMtLjA5Mi0uMDMyLS4xODUtLjAzNS0uMTg1LS4wMzVsLTYuMzY0IDYuMzA4YTEuMDM1IDEuMDM1IDAgMCAwIC45MyAxLjc2MmwxMC45MTQtMi4zMjhhLjMuMyAwIDAgMCAuMDkyLS4xN2wuMjQyLjI1bC0zLjcyIDMuNjloLS4xOGwtMjIuMDg2IDIyLjI2bDcuMDg2IDYuODI0YTEuMjUgMS4yNSAwIDAgMCAxLjQ3Ni4xNDlhMS4zMyAxLjMzIDAgMCAwIC42NDUtMS4zNTZsLTEuMDM1LTQuNWEuNTMuNTMgMCAwIDEgMC0uNjJhMTE3LjMgMTE3LjMgMCAwIDAgMjYuNzM4LTE3LjU4M2wtNC41MzUtNC41MzdsLjA4Ni0uMDE0bC0yLjY5LTIuNjg5bC4xNzItLjE3NGwuMTgyLjE4NmwtLjA5NC4wOTFsNy4xMzcgNy4yOTN2LS4wMDNjMTMuNjgtMTIuOTU0IDIzLjM5LTIzLjM2NyAyMC44NjUtMzAuMzc1YTMuODMgMy44MyAwIDAgMC0xLjEwNy0yLjIwOHYuMDA0YTQgNCAwIDAgMC0uNDgzLS4zMDZjLS4wODMtLjA4OC0uMTU2LS4xNzgtLjI0NC0uMjY0bC0uMDY2LjA2NmE0IDQgMCAwIDAtLjU4Mi0uMjlsLjI4OS0uMjkyYy0xLjc5Ni0xLjYtMy4yOC0yLjkyNC01LjUtMi45M3pNMzAuOTQgOTIuMjFsLTUuMTcxIDUuMTcydi4wMDRhMS4wMyAxLjAzIDAgMCAwLS40NTcgMS4xMjVhMS4wMzUgMS4wMzUgMCAwIDAgLjkyMS43ODlsMTIuNjcyLjg3NXoiLz48cGF0aCBmaWxsPSIjZjM3MDM2IiBkPSJNOTEuOTUgMjMuMzFhMTEuMDUgMTEuMDUgMCAwIDAtNy43NTkgMy4xN2ExMC45OSAxMC45OSAwIDAgMC0yLjM5IDExLjY0MWMtNC43NDEtMi4wMy0xMS4xNTUgMS41MS0zMS4xMDYgMjEuNDU3YTEgMSAwIDAgMC0uMDM3LjA5NGExIDEgMCAwIDAtLjExOS4wNjJsLTYuMzA5IDYuMzY0YTEuOTcgMS45NyAwIDAgMC0uMzYzIDIuMzI0YTIuMDEgMi4wMSAwIDAgMCAxLjcwNy45ODRsLjMxMy0uMjAzbDguNDI0LTEuNzk3bC00LjAzIDQuMDY3YTEgMSAwIDAgMC0uMDU0LjE2NmwtMTkuNzUgMTkuNzk5YS44LjggMCAwIDAtLjE5Mi4yMzhsLTUuMDg2IDUuMDlhMS45NyAxLjk3IDAgMCAwLS40MTQgMi4wNDNhMiAyIDAgMCAwIDEuNjU2IDEuMjY1bDEyLjYxOC44OGExIDEgMCAwIDAgLjUyLS40MTVhLjg5Ljg5IDAgMCAwIDAtMS4wMzVsLS4wMjYtLjAyNWEyLjIgMi4yIDAgMCAwIC43MDUtLjU4YTIuMjQgMi4yNCAwIDAgMCAuNDA2LTEuODc2bC0uOTg0LTQuMTg3YTEyNi43IDEyNi43IDAgMCAwIDI2LjMzNC0xNi44NjFhMSAxIDAgMCAwIC4yNDguMTAzYy4yNTQtLjAxOS40OTItLjEyOC42NzItLjMwOGMxMy41NS0xMi44MyAyMS41MTUtMjEuNjIyIDIxLjUxNS0yOC42MDJhOCA4IDAgMCAwLS40MzEtMi44NWExMSAxMSAwIDAgMCAzLjg0NS44M2wtLjAxNS4wMDRhMTEuMiAxMS4yIDAgMCAwIDUuMTgzLTEuNDVsLjAwNC4wMDFhLjg0Ljg0IDAgMCAwIC42MTctLjA1NWE5LjQgOS40IDAgMCAwIDIuMDctMS42NTJhMTAuODcgMTAuODcgMCAwIDAgMy4yNTgtNy43NThhMTAuODcgMTAuODcgMCAwIDAtMy4yNTctNy43NThhMSAxIDAgMCAwLS4xMTgtLjA5MWExMS4wNSAxMS4wNSAwIDAgMC03LjY1Ni0zLjA3OHptLS4wODcgMS43NzJhOS4yNyA5LjI3IDAgMCAxIDUuNTg2IDEuOTE0bC04LjA2OCA4LjExN2ExIDEgMCAwIDAtLjA3Ni4wOThhLjgzLjgzIDAgMCAwLS4yMzkuNTVhLjgzLjgzIDAgMCAwIC4zMTMuNjVoLjAwMmw2LjEgNi4xYTkuMDQgOS4wNCAwIDAgMS0xMC4wMjgtMS45MTNjLTIuNTg2LTIuNi0zLjMzNi02LjUwNC0xLjk1My05Ljg5MWMxLjM4My0zLjM5IDQuNjgtNS42MDUgOC4zNjMtNS42MjVtNy4xMiAzLjQzMmE4Ljg3IDguODcgMCAwIDEgMi4wMzMgNS42NzRhOS4xNSA5LjE1IDAgMCAxLTIuNjg4IDYuNDY0YTEwIDEwIDAgMCAxLTEuMDk4Ljg5NUw5Mi4zMDcgMzYuN2wtLjk2My0uOTYzbC4yNjUtLjI2NWw3LjM3My02Ljk2em0tLjM2NiA0LjE5M2EuNzguNzggMCAwIDAtLjU1LjAzMWEuNzMuNzMgMCAwIDAtLjM2LjQyNmEuNzMuNzMgMCAwIDAgLjA1LjU1OWEyLjIzIDIuMjMgMCAwIDEtLjI1NyAyLjMyOGEuNjQuNjQgMCAwIDAtLjE5NS40ODhjLjAwNC4xODQuMDcuMzYuMTk1LjQ5MmEuNTguNTggMCAwIDAgLjQxNCAwYS42OC42OCAwIDAgMCAuNjcyLS4yMDdhMy41NyAzLjU3IDAgMCAwIC40NjUtMy43Nzd2LjAwNGEuNzguNzggMCAwIDAtLjQzNC0uMzQ0TTc5LjM0IDM5LjQzYTUuNiA1LjYgMCAwIDEgMy4zMSAxLjIyNmE0Ljc2IDQuNzYgMCAwIDAtMi42ODEgMS4zNEw1Ny4xNjIgNjQuNzAxbC00LjQ3Ni00LjQ3NmMxMS44MjgtMTEuNzcyIDE5LjA2LTE3LjkyMSAyMy41NTYtMTkuOTM2YTUuNiA1LjYgMCAwIDEgMy4wOTgtLjg2em0zLjk2NSAyLjk2YTIuOSAyLjkgMCAwIDEgMi4wNDMuODQ0YTIuOCAyLjggMCAwIDEgLjg3OSAyLjEyMWEyLjg3IDIuODcgMCAwIDEtLjk4NSAyLjA3bC0yNC4yNSAyMS4xMDZsLTIuNjE3LTIuNjE3bDIyLjg4Ny0yMi42OGEyLjkgMi45IDAgMCAxIDIuMDQzLS44NDN6bTIuOTk0IDYuNjk4Yy0xLjY5IDYuNzAyLTEwLjY0NyAxNS43ODMtMTkuOTg3IDI0LjYwN2wtMy43NzctMy43NzN6TTUxLjM2NyA2MS41NDdsLjI3NC4yN2wzLjUxMyAzLjUxM2wtOS42MyAyLjA2em01Ljc5MyA1Ljg0bC4wMDQuMDA0bDEuMTY4IDEuMTk1bC4wMTguMDg0bC4wNzguMDEybC4yNDguMjU0bC44Mi44NGwtNS4zODUuNjZ6bTMuODY3IDQuMDc2bDMuNTc4IDMuNTc2QTEyNyAxMjcgMCAwIDEgMzguNzUgOTEuNjk1YTEuNDQgMS40NCAwIDAgMC0uNzc3IDEuNjUzbDEuMDM1IDQuNWEuMzEuMzEgMCAwIDEgMCAuMzYzYS4zMS4zMSAwIDAgMS0uNDE0IDBsLTYuMTAyLTYuMTUyTDUxLjMgNzIuOTc1em0tMjkuOTMzIDIxLjk0bC44NjkuODE0bDQuNDkyIDQuNDkybC0xMC4wMTYtLjY0OGw0LjY1NS00LjY1OXoiLz48L3N2Zz4=' },
-                { name: 'MySQL', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
-                { name: 'Git & Version Control', imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
-                {
-                    name: 'Android Studio',
-                    imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg'
-                },
-                {
-                    name: 'VS Code',
-                    imageUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg'
-                },
-                {
-                    name: 'Xcode',
-                    imageUrl: 'https://img.icons8.com/color/480/xcode.png'
-                },
-
-            ];
-
-            function renderSkills(containerElement) {
-                containerElement.innerHTML = '';
-                skillsData.forEach(skill => {
-                    const skillItem = document.createElement('div');
-                    skillItem.className = 'skill-icon-item';
-                    // Added onerror for placeholder in case image fails to load
-                    skillItem.innerHTML = `
-                    <img src="${skill.imageUrl}" alt="${skill.name} icon" class="skill-icon" onerror="this.onerror=null;this.src='https://placehold.co/48x48/CCCCCC/333333?text=${skill.name.substring(0, 3)}'">
-                    <span class="skill-name">${skill.name}</span>
-                `;
-                    // Hover effect is now handled by CSS with `hover:scale-110` class
-                    containerElement.appendChild(skillItem);
-                });
-            }
-
-
-            const skillsContainerElement = document.querySelector('#skills .flex-wrap'); // Target the flex container
-            renderSkills(skillsContainerElement);
-            // Data for portfolio projects
-            const projectsData = [
-                {
-                    name: 'Parkview Appointment',
-                    image: 'https://play-lh.googleusercontent.com/kZ_pAaBr0NP8vL8A72-k-j-1xsUl10Eg6-KCKXUdT-CvvfD1WDCfZMuYT02HuCirWug=w480-h960-rw',
-                    description: 'Parkview Appointment is your easy-to-use solution for booking doctor appointments at Parkview Hospital. Browse available doctors, view schedules, and book your visit in just a few taps. Get instant confirmation, appointment reminders, and access to your booking history — all from one convenient app.',
-                    categories: ['flutter', 'Appointment', 'Hospital', 'backend'],
-                    techStack: ['Flutter', 'Firebase', 'Getx', 'UI', "RestAPI", "Database", "Backend"],
-                    playStoreLink: 'https://play.google.com/store/apps/details?id=com.appointment.parkview.parkviewappointment&hl=en',
-                    appStoreLink: "",
-                    githubLink: ""
-
-
-                },
-                {
-                    name: 'NeuroCheck Pro',
-                    image: 'https://play-lh.googleusercontent.com/32-yGg2j-0kcqo8cSaOZYLmW4yAi1pVgNDOV8bzQeakeqyIXZTHHNV6XJOA23VUf-P6BhcYzpJpXHGaJnlXbFDo=w480-h960-rw',
-                    description: 'NeuroCheck Pro is a mental health assessment app designed to streamline digital psychological evaluations. The app allows clinicians and users to perform structured assessments, manage patient profiles, and review progress reports.',
-                    categories: ['flutter', 'Appointment', 'Assessment', 'backend'],
-                    techStack: ['Flutter', 'Firebase', 'Getx', 'UI', "RestAPI", "Database", "Backend", "Clean Architecture"],
-                    playStoreLink: 'https://play.google.com/store/apps/details?id=com.neurocheckpro.app&hl=en',
-                    appStoreLink: "https://testflight.apple.com/join/7efwHeNA",
-                    githubLink: ""
-
-                },
-                {
-                    name: 'Al Hasanain',
-                    image: 'https://play-lh.googleusercontent.com/MuMSE0frXIeQ3gLrqRdYXueI3EVNhBUT9Om1Xn1Js_716H9qx32l10ZXzG1jIiy8ZEY=w480-h960-rw',
-                    description: '"Al Hasanain -School Management" is the official mobile application designed to enhance communication and provide seamless access to vital academic information for parents and students of Al Hasanain.',
-                    categories: ['flutter', 'School Management', 'backend'],
-                    techStack: ['Flutter', 'Firebase', 'Getx', 'Notification', 'UI', "RestAPI", "Database", 'SQL', "Backend"],
-                    playStoreLink: 'https://play.google.com/store/apps/details?id=com.alhasanain.studant.parents.app.alhasanain_app&hl=en',
-                    appStoreLink: "",
-                    githubLink: ""
-
-                },
-                {
-                    name: 'Family Planning',
-                    image: 'assets/logo.png',
-                    description: 'A government family planning project designed to help field workers manage and report family planning activities digitally. The app enables employees to log daily work, submit attendance with location tracking, and validate assigned tasks efficiently.',
-                    categories: ['flutter', 'Attendance Management', 'backend'],
-                    techStack: ['Flutter', "GetX", "Dio", "REST API ", "MySQL"],
-                    githubLink: 'https://github.com/SabbirAbdullah/family_planning',
-                    appStoreLink: "",
-                    playStoreLink: ""
-
-                },
-                {
-                    name: 'Ai Assistant',
-                    image: 'https://github.com/user-attachments/assets/ed05a652-6e61-4208-9fbc-65bb1b81519b?text=Ai+Assistant',
-                    description: 'AI Assistant lets you chat or speak directly with a smart AI for instant help. Ask questions, get guidance, and enjoy a seamless voice or text experience — anytime, anywhere.',
-                    categories: ['flutter', 'Ai Assistant', 'backend'],
-                    techStack: ['Flutter', 'Bloc'],
-                    githubLink: 'https://github.com/SabbirAbdullah/AI-Assistant-App',
-                    appStoreLink: "",
-                    playStoreLink: ""
-
-                },
-                {
-                    name: 'E-commerce Mobile App',
-                    image: 'https://github.com/user-attachments/assets/2ffc83a7-0ff0-43b5-8790-69f5245106b0?text=Shopping+App',
-                    description: 'A full-featured e-commerce application allowing users to browse products, add to cart, and complete purchases. Includes user authentication and order history.',
-                    categories: ['flutter', 'ecommerce', 'uiux', 'backend'],
-                    techStack: ['Flutter', 'Firebase', 'Provider', 'UI'],
-                    githubLink: 'https://github.com/SabbirAbdullah/shopping_app',
-                    appStoreLink: "",
-                    playStoreLink: ""
-
-                },
-                {
-                    name: 'My Gallery',
-                    image: 'https://github.com/user-attachments/assets/ba738953-ade6-4ab7-9660-f643f7eda092?text=My+Gallery',
-                    description: 'A real-time messaging application with user profiles, group chats, and multimedia sharing. Optimized for performance and smooth UI transitions.',
-                    categories: ['flutter', 'backend'],
-                    techStack: ['Flutter', 'Firebase', 'Getx', 'Animations'],
-                    githubLink: 'https://github.com/SabbirAbdullah/my_gallery',
-                    appStoreLink: "",
-                    playStoreLink: ""
-
-                },
-                {
-                    name: 'Tic Tac Toe Game',
-                    image: 'https://github.com/user-attachments/assets/db0a6c9f-0629-4a84-a215-46e34ea4caab?text=Tic+tac+Toe',
-                    description: 'An intuitive to build Tic Tac Toe game using getx for state management and custom written sizing class for screen specific sizes, with sound null safety, modularized code and better folder struct keeping best practices in mind!',
-                    categories: ['flutter', 'uiux', "game", 'tic tac toe'],
-                    techStack: ['Flutter', 'GetX', 'Custom Widgets',],
-                    githubLink: 'https://github.com/SabbirAbdullah/tic_tac_toc',
-                    appStoreLink: "",
-                    playStoreLink: ""
-
-                },
-
-            ];
-
-            const projectsContainer = document.getElementById('projects-container');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-
-            function renderProjects(filterCategory = 'all') {
-                projectsContainer.innerHTML = '';
-                const filteredProjects = projectsData.filter(project =>
-                    filterCategory === 'all' || project.categories.includes(filterCategory)
-                );
-
-                if (filteredProjects.length === 0) {
-                    projectsContainer.innerHTML = '<p class="text-center text-slate-500">No projects found for this category.</p>';
-                    return;
-                }
-
-                filteredProjects.forEach(project => {
-                    const projectCard = document.createElement('div');
-                    projectCard.className =
-                        'bg-stone-50 rounded-lg shadow hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col';
-
-                    // build dynamic links
-                    let linksHTML = '';
-                    if (project.playStoreLink)
-                        linksHTML += `<a href="${project.playStoreLink}" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-teal-600 hover:text-teal-700">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="h-8">
-      </a>`;
-                    if (project.appStoreLink)
-                        linksHTML += `<a href="${project.appStoreLink}" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-teal-700">
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" class="h-8">
-      </a>`;
-                    if (project.githubLink)
-                        linksHTML += `<a href="${project.githubLink}" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-teal-700">
-          <img src="assets/github.svg" alt="GitHub" class="h-6"> GitHub
-      </a>`;
-
-                    projectCard.innerHTML = `
-      <img src="${project.image}" alt="${project.name}" class="w-full h-48 object-cover">
-      <div class="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          <h3 class="text-xl font-semibold text-slate-800 mb-2">${project.name}</h3>
-          <p class="text-slate-600 text-sm mb-4">${project.description}</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            ${project.techStack.map(tech => `<span class="px-2 py-1 bg-teal-100 text-teal-700 rounded text-xs">${tech}</span>`).join('')}
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#hero" class="flex items-center gap-3">
+          <div class="rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 flex items-center justify-center shadow-md animate-float">
+            <span class="text-lg font-bold">S</span>
           </div>
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight">Sabbir</h1>
+            <p class="text-xs text-slate-400">Mobile Application Developer</p>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-4">
+          <a href="#hero" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Home</a>
+          <a href="#about" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">About</a>
+          <a href="#skills" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Skills</a>
+          <a href="#project" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Projects</a>
+          <a href="#experience" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Experience</a>
+          <a href="#education" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Education</a>
+          <a href="#contact" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Contact</a>
         </div>
-        <div class="flex flex-wrap items-center gap-3 mt-4">
-          ${linksHTML || '<span class="text-slate-400 text-sm italic">No public link available</span>'}
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md bg-slate-800 hover:bg-slate-700 focus:outline-none">
+            <span class="text-2xl">☰</span>
+          </button>
         </div>
       </div>
-    `;
-                    projectsContainer.appendChild(projectCard);
-                });
-            }
+    </div>
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    renderProjects(button.dataset.category);
-                });
-            });
+    <div id="mobile-menu" class="md:hidden hidden bg-slate-800/90 backdrop-blur-md">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Home</a>
+        <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">About</a>
+        <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Skills</a>
+        <a href="#project" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Projects</a>
+        <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Experience</a>
+        <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Education</a>
+        <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Contact</a>
+      </div>
+    </div>
+  </header>
 
-            renderProjects('all');
-        });
-    </script>
-    <p class="mt-12 text-sm text-slate-500 text-center">&copy; 2025 Sabbir. All rights reserved.</p>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative bg-slate-800 p-8 md:p-12 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center justify-between animate-fade-up">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 opacity-40 z-0 rounded-xl"></div>
+      <div class="relative z-10 md:w-3/5 text-center md:text-left">
+        <h1 class="text-5xl sm:text-6xl font-extrabold text-white leading-tight">
+          Hi, I'm <span class="text-brand-500">Sabbir</span>
+        </h1>
+        <p class="mt-4 text-xl text-slate-300 max-w-2xl mx-auto md:mx-0">
+        Mobile App Developer passionate about building beautiful, high-performance, intuitive cross-platform apps.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+          <a href="#project" class="inline-flex items-center justify-center gap-2 bg-brand-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-600 transition shadow-md">
+            View My Work →
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-brand-500 text-brand-500 font-semibold px-6 py-3 rounded-lg hover:bg-slate-700/50 transition shadow-md">
+            Get in Touch
+          </a>
+        </div>
+      </div>
+      <div class="relative z-10 mt-8 md:mt-0 md:w-2/5 flex justify-center">
+        <img src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg" alt="Sabbir - Profile Picture" class="rounded-full w-48 h-48 object-cover shadow-xl border-4 border-slate-700 animate-float">
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">About Me</h2>
+      <p class="text-lg text-slate-300 max-w-4xl mx-auto text-center">
+        With <span class="font-bold text-brand-500">1.5 year of professional experience</span> in <span class="font-bold text-brand-500">Mobile Applicationƒ development</span>, I specialize in crafting <span class="font-bold">robust and user-friendly mobile applications</span>.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Technical Skills</h2>
+      <p class="text-slate-300 mb-8 text-center">A visual representation of my core technical competencies.</p>
+    <div class="skill-icon-grid flex flex-row gap-4 overflow-x-auto py-4 px-2"></div>
+        <div class="skill-icon-grid w-full"></div>
+      </div>
+      
+    </section>
+
+    <!-- Projects -->
+    <section id="project" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">My Projects</h2>
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button class="filter-btn active px-3 py-2 rounded-sm text-sm font-medium bg-brand-500 text-white shadow-md" data-category="all">All Projects</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="flutter">Flutter Apps</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="backend">Backend Integration</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="uiux">UI/UX Focused</button>
+      </div>
+      <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Work Experience</h2>
+      <div class="flow-root">
+        <div class="bg-slate-900 p-6 rounded-lg shadow-inner">
+          <h3 class="text-xl font-semibold text-white">mPair Technologies Ltd.</h3>
+          <p class="text-md font-medium text-brand-500">Chittagong, Bangladesh | Aug 2024 – Present</p>
+          <ul class="mt-4 space-y-3 list-disc list-inside text-slate-300">
+            <li>Developed and maintained cross-platform mobile apps using Flutter & Dart.</li>
+            <li>Collaborated with designers, backend developers, and product managers.</li>
+            <li>Integrated RESTful APIs and managed state with GetX/BLoC/Riverpod.</li>
+            <li>Contributed to successful product launches with thousands of users.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
+      <h2 class="text-3xl font-bold text-white mb-6 text-center">Education</h2>
+      <div class="bg-slate-900 p-6 rounded-lg shadow-inner">
+        <h3 class="text-xl font-semibold text-white">B.Sc. in CSE</h3>
+        <p class="text-md font-medium text-brand-500">Port City International University, Chittagong</p>
+        <p class="text-slate-400">2019 - 2023</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up text-center">
+      <h2 class="text-3xl font-bold text-white mb-6">Get in Touch</h2>
+      <p class="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">Have a project in mind or want to connect? Reach out via email or social profiles.</p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
+        <a href="mailto:sabbir.abdullah.dev@gmail.com" class="inline-flex items-center gap-2 bg-brand-500 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-600 transition shadow-md">
+          ✉️ Email Me
+        </a>
+      </div>
+      <div class="mt-6 flex justify-center space-x-6">
+        <a href="https://www.linkedin.com/in/sabbir-abdullah/" target="_blank" class="hover:text-brand-500 transition">
+          <img src="assets/linkedin.svg" alt="LinkedIn" width="32" height="32">
+        </a>
+        <a href="https://github.com/SabbirAbdullah" target="_blank" class="hover:text-brand-500 transition">
+          <img src="assets/github.svg" alt="GitHub" width="32" height="32">
+        </a>
+      </div>
+      <p class="mt-6 text-sm text-slate-400">&copy; 2025 Sabbir. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+  </script>
+
 </body>
-
 </html>

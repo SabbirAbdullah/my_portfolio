@@ -1,0 +1,19 @@
+{
+  "name": "sabbir-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "chart.js": "^4.5.1"
+  },
+"devDependencies": {
+  "autoprefixer": "^10.4.14",
+  "postcss": "^8.4.21",
+  "vite": "^5.0.0"
+}
+
+}
