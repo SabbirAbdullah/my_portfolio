@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       categories: ['flutter', 'Appointment', 'Hospital', 'backend'],
       techStack: ['Flutter', 'Firebase', 'Getx', 'UI', 'RestAPI', 'Database', 'Backend'],
       playStoreLink: 'https://play.google.com/store/apps/details?id=com.appointment.parkview.parkviewappointment&hl=en',
-      appStoreLink: "",
+      appStoreLink: "https://apps.apple.com/us/app/parkview-appointment/id1660447155",
       githubLink: ""
     },
     {
