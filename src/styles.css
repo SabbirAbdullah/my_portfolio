@@ -160,17 +160,19 @@ footer a:hover {
 }
 /* Typing effect */
 .typing {
-  width: fit-content;
-  overflow: hidden;
-  border-right: 3px solid #92cde2; 
-  white-space: nowrap;
-  animation: typing 3s steps(30) 1s forwards, blink 0.7s infinite;
+  display: inline-block; /* instead of width: fit-content */
+  border-right: 2px solid #fff;
+  white-space: pre-wrap;
+  word-break: break-word;
+  height: 1em;
+  animation: typing 3s steps(30) 1s forwards, blink 0.5s infinite;
 }
 
-/* @keyframes typing {
+
+@keyframes typing {
   from { width: 0; }
   to { width: 100%; }
-} */
+}
 @keyframes blink {
   0% { border-color: transparent; }
   50% { border-color: #5c96b3; }
