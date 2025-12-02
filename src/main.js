@@ -2,21 +2,33 @@ import './styles.css';
 import Chart from 'chart.js/auto';
 
 document.addEventListener('DOMContentLoaded', () => {
+const text = "Md Abdullah Kaisar Sabbir";
+const target = document.getElementById("typing-name");
 
-  const text = "Md Abdullah Kaisar Sabbir";
-  const target = document.getElementById("typing-name");
+let index = 0;
 
-  let index = 0;
+function typeEffect() {
+  if (index < text.length) {
+    target.textContent += text.charAt(index);
+    index++;
 
-  function typeEffect() {
-    if (index < text.length) {
-      target.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeEffect, 120); // typing speed
-    }
+    // Reposition cursor after adding a character
+    requestAnimationFrame(updateCursorPosition);
+
+    setTimeout(typeEffect, 120);
   }
+}
 
-  typeEffect();
+function updateCursorPosition() {
+  const rect = target.getBoundingClientRect();
+  const style = window.getComputedStyle(target);
+
+  // Force cursor (::after) to appear at end of last line
+  target.style.setProperty("--cursor-top", rect.height - parseFloat(style.lineHeight) + "px");
+}
+
+typeEffect();
+
   // ----------------------------
   // Mobile menu toggle
   // ----------------------------
@@ -185,6 +197,27 @@ document.addEventListener('DOMContentLoaded', () => {
       appStoreLink: "",
       playStoreLink: ""
     },
+
+       {
+      name: 'WeatherForecast',
+      image: 'https://github.com/user-attachments/assets/c4d6884e-18bc-4b09-abaa-7303931efde4',
+      description: 'Weather Forecast App – Built with Kotlin, Hilt, Retrofit, and Clean Architecture. Users can search any location and get up-to-date current weather information.',
+      categories: ['kotlin', 'Weather Forecast', 'backend'],
+      techStack: ['Kotlin', 'Hilt', 'Retrofit', 'REST API'],
+      githubLink: 'https://github.com/SabbirAbdullah/weather_forecast_kotlin/',
+      appStoreLink: "",
+      playStoreLink: ""
+    },
+    {
+      name: 'Smart Inventory & POS Sys',
+      image: 'https://github.com/user-attachments/assets/236a3596-1277-44f8-b635-6239f007e26a',
+      description: 'Developed in Flutter with Bloc , Clean MVVM architecture. Features include QR code scanning, online payments, automatic item listing, and quantity updates.',
+      categories: ['flutter', 'backend', 'bloc'],
+      techStack: ['Flutter', 'Bloc', 'Clean Architecture', "POS"],
+      githubLink: 'https://github.com/SabbirAbdullah/smart_inventory_pos_sys',
+      appStoreLink: "",
+      playStoreLink: ""
+    },
     {
       name: 'AI Assistant',
       image: 'https://github.com/user-attachments/assets/ed05a652-6e61-4208-9fbc-65bb1b81519b?text=Ai+Assistant',
@@ -205,16 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
       appStoreLink: "",
       playStoreLink: ""
     },
-    {
-      name: 'My Gallery',
-      image: 'https://github.com/user-attachments/assets/ba738953-ade6-4ab7-9660-f643f7eda092?text=My+Gallery',
-      description: 'A real-time messaging application with user profiles, group chats, and multimedia sharing. Optimized for performance and smooth UI transitions.',
-      categories: ['flutter', 'backend'],
-      techStack: ['Flutter', 'Firebase', 'Getx', 'Animations'],
-      githubLink: 'https://github.com/SabbirAbdullah/my_gallery',
-      appStoreLink: "",
-      playStoreLink: ""
-    },
+ 
     {
       name: 'Tic Tac Toe Game',
       image: 'https://github.com/user-attachments/assets/db0a6c9f-0629-4a84-a215-46e34ea4caab?text=Tic+tac+Toe',

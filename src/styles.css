@@ -158,40 +158,46 @@ footer a:hover {
     min-width: 360px;
   }
 }
-/* Typing effect */
+
+/* Parent typing element */
 .typing {
- /* instead of width: fit-content */
-  border-right: 2px solid #fff;
+  display: inline-block;
+  vertical-align: baseline;
   white-space: pre-wrap;
   word-break: break-word;
-  height: 1em;
-  animation: typing 3s steps(30) 1s forwards, blink 0.5s infinite;
+  position: relative;
 }
 
+/* The blinking cursor */
+.typing::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  background: #ffffff;
+  animation: blink 0.5s infinite;
+  height: 1em; /* Automatically matches line height */
+  bottom: 0;
+  top: var(--cursor-top, 0);
 
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+  left: calc(100% + 3px);
 }
+
+/* Cursor blink animation */
 @keyframes blink {
-  0% { border-color: transparent; }
-  50% { border-color: #5c96b3; }
-  100% { border-color: transparent; }
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
 }
 
-/* Prevent breaking on mobile */
+/* Text size */
 #typing-name {
-  font-size: 1.8rem; /* mobile */
+  font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 @media (min-width: 640px) {
-  #typing-name {
-    font-size: 2.25rem; /* sm */
-  }
+  #typing-name { font-size: 2.25rem; }
 }
 
 @media (min-width: 768px) {
-  #typing-name {
-    font-size: 3rem; /* md */
-  }
+  #typing-name { font-size: 3rem; }
 }
