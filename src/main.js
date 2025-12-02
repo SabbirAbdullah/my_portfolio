@@ -2,12 +2,41 @@ import './styles.css';
 import Chart from 'chart.js/auto';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const text = "Md Abdullah Kaisar Sabbir";
+  const target = document.getElementById("typing-name");
+
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      target.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, 120); // typing speed
+    }
+  }
+
+  typeEffect();
   // ----------------------------
   // Mobile menu toggle
   // ----------------------------
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  mobileMenuButton?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuLinks = document.querySelectorAll("#mobile-menu a"); // all menu items
+
+  // Toggle menu open/close
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+
+  // Close menu when any menu link is clicked
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
 
   // ----------------------------
   // IntersectionObserver for reveal animations
@@ -276,7 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProjects('all');
 
 
-  
+
+
 
   // Filter buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -286,4 +316,27 @@ document.addEventListener('DOMContentLoaded', () => {
       renderProjects(btn.dataset.category);
     });
   });
+
+
+
+///Name Typing 
+// document.addEventListener("DOMContentLoaded", () => {
+//   const text = "Md Abdullah Kaisar Sabbir";
+//   const target = document.getElementById("typing-name");
+
+//   let index = 0;
+
+//   function typeEffect() {
+//     if (index < text.length) {
+//       target.textContent += text.charAt(index);
+//       index++;
+//       setTimeout(typeEffect, 120); // typing speed
+//     }
+//   }
+
+//   typeEffect();
+// });
+
+
+
 });

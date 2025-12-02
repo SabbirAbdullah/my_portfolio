@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Md Abdullah Kaisar Sabbir — Portfolio</title>
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Dancing+Script:wght@700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arizonia&family=Dancing+Script:wght@700&family=Inter:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-slate-900 text-slate-100 font-sans leading-relaxed">
 
   <!-- Header -->
@@ -17,29 +21,36 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <a href="#hero" class="flex items-center gap-3">
-          <div class="rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 flex items-center justify-center shadow-md animate-float">
+          <div
+            class="rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white w-12 h-12 flex items-center justify-center shadow-md animate-float">
             <span class="text-lg font-bold">𝒮</span>
 
           </div>
           <div>
             <h1 class="text-xl font-semibold tracking-tight">Sabbir</h1>
-            <p class="text-xs text-slate-400">Mobile Application Developer</p>
+            <p class="text-xs text-slate-400">Mobile Application Developer | Flutter | Kotlin</p>
           </div>
         </a>
 
         <div class="hidden md:flex items-center gap-4">
           <a href="#hero" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Home</a>
           <a href="#about" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">About</a>
-          <a href="#skills" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Skills</a>
-          <a href="#project" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Projects</a>
-          <a href="#experience" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Experience</a>
-          <a href="#education" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Education</a>
-          <a href="#contact" class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Contact</a>
+          <a href="#skills"
+            class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Skills</a>
+          <a href="#project"
+            class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Projects</a>
+          <a href="#experience"
+            class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Experience</a>
+          <a href="#education"
+            class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Education</a>
+          <a href="#contact"
+            class="px-3 py-2 rounded-md text-base font-medium hover:text-brand-500 transition">Contact</a>
         </div>
 
         <!-- Mobile Menu Button -->
         <div class="md:hidden">
-          <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md bg-slate-800 hover:bg-slate-700 focus:outline-none">
+          <button id="mobile-menu-button"
+            class="inline-flex items-center justify-center p-2 rounded-md bg-slate-800 hover:bg-slate-700 focus:outline-none">
             <span class="text-2xl">☰</span>
           </button>
         </div>
@@ -52,7 +63,8 @@
         <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">About</a>
         <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Skills</a>
         <a href="#project" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Projects</a>
-        <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Experience</a>
+        <a href="#experience"
+          class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Experience</a>
         <a href="#education" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Education</a>
         <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:text-brand-500">Contact</a>
       </div>
@@ -60,36 +72,51 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+<!-- Hero Section -->
+<section id="hero" class="relative bg-slate-800 p-8 md:p-12 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center justify-between animate-fade-up">
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 opacity-40 z-0 rounded-xl"></div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative bg-slate-800 p-8 md:p-12 rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center justify-between animate-fade-up">
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 opacity-40 z-0 rounded-xl"></div>
-      <div class="relative z-10 md:w-3/5 text-center md:text-left">
-        <h1 class="text-5xl sm:text-6xl font-extrabold text-white leading-tight">
-          Hi, I'm <span class="text-brand-500">Sabbir</span>
-        </h1>
-        <p class="mt-4 text-xl text-slate-300 max-w-2xl mx-auto md:mx-0">
-        Mobile App Developer passionate about building beautiful, high-performance, intuitive cross-platform apps.
-        </p>
-        <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-          <a href="#project" class="inline-flex items-center justify-center gap-2 bg-brand-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-600 transition shadow-md">
-            View My Work →
-          </a>
-          <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-brand-500 text-brand-500 font-semibold px-6 py-3 rounded-lg hover:bg-slate-700/50 transition shadow-md">
-            Get in Touch
-          </a>
-        </div>
-      </div>
-      <div class="relative z-10 mt-8 md:mt-0 md:w-2/5 flex justify-center">
-        <img src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg" alt="Sabbir - Profile Picture" class="rounded-full w-48 h-48 object-cover shadow-xl border-4 border-slate-700 animate-float">
-      </div>
-    </section>
+  <div class="relative z-10 md:w-3/5 text-center md:text-left">
+    
+    <!-- "Hi, I am" -->
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+      Hi, I am
+    </h1>
+
+    <!-- Typing Name -->
+    <h2 id="typing-name"
+       class="text-3xl sm:text-4xl font-bold mt-2 text-white overflow-hidden whitespace-nowrap border-r-4 border-white pr-2 typing-animation"></h2>
+    </h2>
+
+    <p class="mt-4 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto md:mx-0">
+      Mobile App Developer passionate about building beautiful, high-performance cross-platform apps.
+    </p>
+
+    <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+      <a href="#project" class="inline-flex items-center justify-center gap-2 bg-brand-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-brand-600 transition shadow-md">
+        View My Work →
+      </a>
+      <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-brand-500 text-brand-500 font-semibold px-6 py-3 rounded-lg hover:bg-slate-700/50 transition shadow-md">
+        Get in Touch
+      </a>
+    </div>
+  </div>
+
+  <div class="relative z-10 mt-8 md:mt-0 md:w-2/5 flex justify-center">
+    <img src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg"
+         alt="Sabbir - Profile Picture"
+         class="rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-xl border-4 border-slate-700 animate-float">
+  </div>
+</section>
+
 
     <!-- About -->
     <section id="about" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
       <h2 class="text-3xl font-bold text-white mb-6 text-center">About Me</h2>
       <p class="text-lg text-slate-300 max-w-4xl mx-auto text-center">
-        With <span class="font-bold text-brand-500">1.5 year of professional experience</span> in <span class="font-bold text-brand-500">Mobile Application Development</span>, I specialize in crafting <span class="font-bold">robust and user-friendly mobile applications</span>.
+        With <span class="font-bold text-brand-500">1.5 year of professional experience</span> in <span
+          class="font-bold text-brand-500">Mobile Application Development</span>, I specialize in crafting <span
+          class="font-bold">robust and user-friendly mobile applications</span>.
       </p>
     </section>
 
@@ -97,20 +124,24 @@
     <section id="skills" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
       <h2 class="text-3xl font-bold text-white mb-6 text-center">Technical Skills</h2>
       <p class="text-slate-300 mb-8 text-center">A visual representation of my core technical competencies.</p>
-    <div class="skill-icon-grid flex flex-row gap-4 overflow-x-auto py-4 px-2"></div>
-        <div class="skill-icon-grid w-full"></div>
+      <div class="skill-icon-grid flex flex-row gap-4 overflow-x-auto py-4 px-2"></div>
+      <div class="skill-icon-grid w-full"></div>
       </div>
-      
+
     </section>
 
     <!-- Projects -->
     <section id="project" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up">
       <h2 class="text-3xl font-bold text-white mb-6 text-center">My Projects</h2>
       <div class="flex flex-wrap justify-center gap-4 mb-8">
-        <button class="filter-btn active px-3 py-2 rounded-sm text-sm font-medium bg-brand-500 text-white shadow-md" data-category="all">All Projects</button>
-        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="flutter">Flutter Apps</button>
-        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="backend">Backend Integration</button>
-        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300" data-category="uiux">UI/UX Focused</button>
+        <button class="filter-btn active px-3 py-2 rounded-sm text-sm font-medium bg-brand-500 text-white shadow-md"
+          data-category="all">All Projects</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300"
+          data-category="flutter">Flutter Apps</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300"
+          data-category="backend">Backend Integration</button>
+        <button class="filter-btn px-3 py-2 rounded-sm text-sm font-medium bg-slate-700 text-slate-300"
+          data-category="uiux">UI/UX Focused</button>
       </div>
       <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
@@ -145,9 +176,11 @@
     <!-- Contact -->
     <footer id="contact" class="bg-slate-800 p-8 rounded-xl shadow-sm animate-fade-up text-center">
       <h2 class="text-3xl font-bold text-white mb-6">Get in Touch</h2>
-      <p class="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">Have a project in mind or want to connect? Reach out via email or social profiles.</p>
+      <p class="text-lg text-slate-300 mb-6 max-w-2xl mx-auto">Have a project in mind or want to connect? Reach out via
+        email or social profiles.</p>
       <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
-        <a href="mailto:sabbir.abdullah.dev@gmail.com" class="inline-flex items-center gap-2 bg-brand-500 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-600 transition shadow-md">
+        <a href="mailto:sabbir.abdullah.dev@gmail.com"
+          class="inline-flex items-center gap-2 bg-brand-500 text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-brand-600 transition shadow-md">
           ✉️ Email Me
         </a>
       </div>
@@ -163,14 +196,27 @@
     </footer>
   </main>
 
-  <script type="module" src="/src/main.js"></script>
 
-  <script>
+  <!-- <script>
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuButton?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
-  </script>
+       if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+    } -->
+
+
+  <!-- </script> -->
+
+
+  <script type="module" src="/src/main.js"></script>
+
+
+
 
 </body>
+
 </html>
