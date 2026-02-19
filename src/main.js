@@ -176,7 +176,7 @@ typeEffect();
       categories: ['flutter', 'Appointment', 'Assessment', 'backend'],
       techStack: ['Flutter', 'Firebase', 'Getx', 'UI', 'RestAPI', 'Database', 'Backend', 'Clean Architecture'],
       playStoreLink: 'https://play.google.com/store/apps/details?id=com.neurocheckpro.app&hl=en',
-      appStoreLink: "https://testflight.apple.com/join/7efwHeNA",
+      appStoreLink: "https://apps.apple.com/us/app/neurocheck-pro/id6753708129",
       githubLink: ""
     },
     {
