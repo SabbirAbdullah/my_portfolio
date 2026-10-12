@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Abdullah Kaisar Sabbir | Flutter Developer &amp; Mobile App Developer</title>
+  <meta name="description"
+    content="Flutter developer and mobile app developer in Chattogram, Bangladesh. 2+ years shipping Android and iOS apps for healthcare, education and business with Flutter, Dart, Kotlin and Node.js." />
+  <meta name="theme-color" content="#0c1716" />
+  <link rel="canonical" href="https://sabbirabdullah.vercel.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Md Abdullah Kaisar Sabbir | Flutter Developer &amp; Mobile App Developer" />
+  <meta property="og:description"
+    content="Flutter apps in production on Google Play and the App Store, used by 12,000+ people." />
+  <meta property="og:url" content="https://sabbirabdullah.vercel.app/" />
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c1716'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23dcb862'%3ES%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Md Abdullah Kaisar Sabbir",
+    "jobTitle": "Mobile Application Developer",
+    "url": "https://sabbirabdullah.vercel.app/",
+    "email": "mailto:sabbir.abdullah.dev@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Chattogram", "addressCountry": "BD" },
+    "worksFor": { "@type": "Organization", "name": "mPair Technologies Ltd." },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Port City International University" },
+    "knowsAbout": ["Flutter", "Dart", "Kotlin", "Node.js", "Firebase", "Clean Architecture"],
+    "sameAs": ["https://github.com/SabbirAbdullah", "https://www.linkedin.com/in/sabbir-abdullah/"]
+  }
+  </script>
+
+  <style>
+    /* ---------- Tokens ---------- */
+    :root {
+      --bg: #0c1716;
+      --surface: #132321;
+      --surface-2: #1a2e2b;
+      --line: rgba(238, 232, 218, 0.12);
+      --line-strong: rgba(238, 232, 218, 0.22);
+      --text: #eee8da;
+      --muted: #a5b4ae;
+      --gold: #dcb862;
+      --gold-ink: #1a1405;
+      --live: #6fd6a5;
+      --display: 'Fraunces', Georgia, serif;
+      --body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --wrap: 1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    ::selection { background: rgba(220, 184, 98, .3); }
+
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+    .skip {
+      position: absolute; left: 1rem; top: -4rem; z-index: 100;
+      background: var(--gold); color: var(--gold-ink); padding: .6rem 1rem; border-radius: 8px; font-weight: 600;
+    }
+    .skip:focus { top: 1rem; }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      border-bottom: 1px solid transparent;
+      transition: background .3s, border-color .3s;
+    }
+    .site-header.scrolled {
+      background: rgba(12, 23, 22, .88);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border-bottom-color: var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+
+    .brand { display: flex; align-items: center; gap: .7rem; font-weight: 600; }
+    .brand-mark {
+      width: 36px; height: 36px; border-radius: 9px; background: var(--gold); color: var(--gold-ink);
+      display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 1.15rem;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: .92rem; color: var(--muted); padding: .25rem 0; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); border-bottom-color: var(--gold); }
+    .nav-links a.nav-cta {
+      color: var(--gold-ink); background: var(--gold); padding: .5rem 1.1rem; border-radius: 9px; font-weight: 600; border: 0;
+    }
+    .nav-links a.nav-cta:hover { background: #e8c878; }
+
+    .menu-btn {
+      display: none; background: none; border: 1px solid var(--line-strong); color: var(--text);
+      width: 42px; height: 42px; border-radius: 10px; cursor: pointer; align-items: center; justify-content: center;
+    }
+    .menu-btn span, .menu-btn span::before, .menu-btn span::after {
+      display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; position: relative; transition: transform .25s, background .25s;
+    }
+    .menu-btn span::before, .menu-btn span::after { content: ''; position: absolute; left: 0; }
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
+    .menu-btn[aria-expanded="true"] span { background: transparent; }
+    .menu-btn[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+    .menu-btn[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      font: 600 .95rem/1 var(--body); padding: .95rem 1.5rem; border-radius: 10px; border: 1px solid transparent;
+      cursor: pointer; transition: background .2s, border-color .2s, color .2s;
+    }
+    .btn-primary { background: var(--gold); color: var(--gold-ink); }
+    .btn-primary:hover { background: #e8c878; }
+    .btn-line { border-color: var(--line-strong); color: var(--text); background: transparent; }
+    .btn-line:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 3.5rem 0 4rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; }
+
+    .hero-id { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.75rem; }
+    .avatar { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line-strong); background: var(--surface-2); }
+    .hero-name { font-weight: 600; line-height: 1.3; }
+    .hero-role { color: var(--muted); font-size: .92rem; line-height: 1.3; }
+
+    h1 {
+      font-family: var(--display); font-weight: 500; font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+      line-height: 1.1; letter-spacing: -.015em; max-width: 17ch; margin-bottom: 1.5rem;
+    }
+    .hero-sub { color: var(--muted); font-size: 1.06rem; max-width: 52ch; margin-bottom: 2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-bottom: 1.75rem; }
+
+    .status { display: inline-flex; align-items: center; gap: .6rem; color: var(--muted); font-size: .92rem; }
+    .status::before {
+      content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--live);
+      box-shadow: 0 0 0 4px rgba(111, 214, 165, .16);
+    }
+
+    /* Phones: the one orchestrated motion on the page */
+    .phones { --pw: clamp(104px, 12.5vw, 142px); display: flex; justify-content: center; align-items: flex-start; gap: 14px; }
+    .phone {
+      position: relative; width: var(--pw); aspect-ratio: 9 / 19; border-radius: 26px; border: 5px solid #040a09;
+      background: linear-gradient(160deg, var(--surface-2), var(--surface)); overflow: hidden;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, .45), 0 0 0 1px var(--line);
+      opacity: 0; transform: translateY(28px); animation: rise .8s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+    .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+    .phone.p1 { margin-top: 56px; animation-delay: .15s; }
+    .phone.p2 { margin-top: 0; animation-delay: .3s; }
+    .phone.p3 { margin-top: 84px; animation-delay: .45s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    .broken img { display: none; }
+    .broken::after {
+      content: attr(data-name); position: absolute; inset: 0; display: grid; place-items: center; text-align: center;
+      padding: .75rem; font-family: var(--display); font-size: .95rem; color: var(--gold);
+    }
+
+    /* ---------- Facts ---------- */
+    .facts { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fact { padding: 1.75rem 1.5rem; border-left: 1px solid var(--line); }
+    .fact:first-child { border-left: 0; padding-left: 0; }
+    .fact b { display: block; font-family: var(--display); font-weight: 500; font-size: 2.1rem; line-height: 1.1; margin-bottom: .35rem; }
+    .fact span { color: var(--muted); font-size: .92rem; display: block; max-width: 24ch; line-height: 1.45; }
+
+    /* ---------- Sections ---------- */
+    .section { padding: 6.5rem 0; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .split { display: grid; grid-template-columns: 5fr 7fr; gap: 4.5rem; align-items: start; }
+    .split-head { position: sticky; top: 110px; }
+
+    h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.12; letter-spacing: -.01em; margin-bottom: 1rem; }
+    .lede { color: var(--muted); max-width: 46ch; }
+
+    /* About */
+    .portrait { width: 100%; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 18px; border: 1px solid var(--line-strong); background: var(--surface-2); margin-top: 2rem; }
+    .about-text p { color: var(--muted); font-size: 1.04rem; max-width: 62ch; margin-bottom: 1.2rem; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.75rem; }
+    .text-link { color: var(--gold); font-weight: 600; border-bottom: 1px solid rgba(220, 184, 98, .4); padding-bottom: 2px; transition: border-color .2s; }
+    .text-link:hover { border-bottom-color: var(--gold); }
+
+    /* Skills */
+    .skill-groups { display: grid; gap: 0; }
+    .skill-group { display: grid; grid-template-columns: 11rem 1fr; gap: 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--line); }
+    .skill-group:first-child { border-top: 0; padding-top: 0; }
+    .skill-group dt { font-weight: 600; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: .3rem 0; color: var(--muted); }
+    .skill-list li::after { content: ','; margin-right: .4em; }
+    .skill-list li:last-child::after { content: ''; }
+    .skill-list li.core { color: var(--text); font-weight: 600; }
+
+    /* Work */
+    .work-head { display: flex; justify-content: space-between; align-items: end; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.75rem; }
+    .work-head h2 { margin-bottom: 0; }
+    .work-head .lede { margin-bottom: .35rem; }
+
+    .sub-title { font-family: var(--display); font-weight: 500; font-size: 1.35rem; margin-bottom: 1.25rem; }
+    .sub-title.second { margin-top: 4.5rem; }
+
+    .apps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.25rem; }
+    .app { grid-column: span 2; display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: border-color .25s; }
+    .app:hover { border-color: var(--line-strong); }
+    .app.lg { grid-column: span 3; flex-direction: row; }
+
+    .shot { position: relative; height: 210px; background: linear-gradient(160deg, var(--surface-2), #0f1c1b); overflow: hidden; flex-shrink: 0; }
+    .app.lg .shot { height: auto; min-height: 320px; width: 40%; }
+    .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+    .app-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .app-body h4, .repo h4 { font-family: var(--display); font-weight: 500; font-size: 1.2rem; line-height: 1.25; margin-bottom: .5rem; }
+    .app-body p { color: var(--muted); font-size: .95rem; margin-bottom: 1rem; flex: 1; }
+    .stack { color: var(--text); font-size: .85rem; opacity: .75; margin-bottom: 1.25rem; }
+    .stores { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .store { font-size: .85rem; font-weight: 600; padding: .5rem .95rem; border: 1px solid var(--line-strong); border-radius: 8px; transition: border-color .2s, color .2s; }
+    .store:hover { border-color: var(--gold); color: var(--gold); }
+
+    .repos { border-top: 1px solid var(--line); }
+    .repo { display: grid; grid-template-columns: 120px 1fr auto; gap: 1.5rem; align-items: center; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+    .thumb { position: relative; width: 120px; height: 80px; border-radius: 10px; overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb.broken::after { content: ''; }
+    .repo-main p { color: var(--muted); font-size: .95rem; max-width: 60ch; }
+    .repo-main .stack { margin: .4rem 0 0; }
+
+    /* Experience */
+    .org { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .5rem 1.5rem; margin-bottom: .25rem; }
+    .org h3 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; }
+    .org span, .place { color: var(--muted); font-size: .92rem; }
+    .place { margin-bottom: 2.25rem; }
+
+    .timeline { position: relative; margin-left: .45rem; padding-left: 2rem; border-left: 1px solid var(--line-strong); display: grid; gap: 2.5rem; }
+    .role { position: relative; }
+    .role::before {
+      content: ''; position: absolute; left: calc(-2rem - 5px); top: .55rem; width: 9px; height: 9px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--gold);
+    }
+    .role.current::before { background: var(--gold); }
+    .role-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .25rem 1.5rem; margin-bottom: .75rem; }
+    .role-head h4 { font-size: 1.1rem; font-weight: 600; }
+    .role-head span { color: var(--muted); font-size: .9rem; }
+    .role ul { display: grid; gap: .65rem; }
+    .role li { position: relative; padding-left: 1.2rem; color: var(--muted); font-size: .97rem; max-width: 64ch; }
+    .role li::before { content: ''; position: absolute; left: 0; top: .72em; width: 6px; height: 1px; background: var(--gold); }
+
+    .edu { margin-top: 3.5rem; padding: 1.5rem 1.75rem; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .edu h4 { font-family: var(--display); font-weight: 500; font-size: 1.2rem; margin-bottom: .2rem; }
+    .edu p { color: var(--muted); font-size: .95rem; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 4.5rem; align-items: start; }
+    .contact h2 { font-size: clamp(2.1rem, 4.2vw, 3.3rem); max-width: 16ch; }
+    .email-line { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem; margin-top: 2rem; }
+    .email-big { font-family: var(--display); font-size: clamp(1.15rem, 2.4vw, 1.55rem); border-bottom: 1px solid var(--gold); padding-bottom: 2px; word-break: break-all; }
+    .copy { font: 600 .85rem var(--body); background: transparent; color: var(--text); border: 1px solid var(--line-strong); border-radius: 8px; padding: .5rem .95rem; cursor: pointer; transition: border-color .2s, color .2s; }
+    .copy:hover { border-color: var(--gold); color: var(--gold); }
+
+    .contact-list { display: grid; }
+    .contact-list li { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .contact-list li:first-child { border-top: 1px solid var(--line); }
+    .contact-list span { color: var(--muted); }
+    .contact-list a:hover { color: var(--gold); }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 1.75rem 0; color: var(--muted); font-size: .88rem; }
+    .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .foot a:hover { color: var(--gold); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .phones { --pw: min(26vw, 150px); justify-content: flex-start; }
+      .split, .contact-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+      .split-head { position: static; }
+      .portrait { max-width: 260px; }
+      .apps { grid-template-columns: repeat(2, 1fr); }
+      .app, .app.lg { grid-column: span 1; flex-direction: column; }
+      .app.lg .shot { width: 100%; min-height: 0; height: 210px; }
+      .facts-grid { grid-template-columns: repeat(2, 1fr); }
+      .fact:nth-child(3) { border-left: 0; padding-left: 0; }
+      .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+    }
+
+    @media (max-width: 760px) {
+      .menu-btn { display: inline-flex; }
+      .nav-links {
+        display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0;
+        background: rgba(12, 23, 22, .98); border-bottom: 1px solid var(--line); padding: .5rem 1.5rem 1.25rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+      .nav-links a.nav-cta { margin-top: .9rem; text-align: center; padding: .9rem; }
+      .section { padding: 4.5rem 0; }
+      .skill-group { grid-template-columns: 1fr; gap: .5rem; }
+      .apps { grid-template-columns: 1fr; }
+      .repo { grid-template-columns: 96px 1fr; }
+      .thumb { width: 96px; height: 68px; }
+      .repo .text-link { grid-column: 2; justify-self: start; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-actions .btn { flex: 1 1 100%; }
+      .facts-grid { grid-template-columns: 1fr; }
+      .fact { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+      .fact:first-child { border-top: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .phone { animation: none; opacity: 1; transform: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header" id="header">
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="Md Abdullah Kaisar Sabbir, home">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span>Sabbir</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="hero-id">
+            <img class="avatar"
+              src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profile.jpg"
+              alt="Portrait of Md Abdullah Kaisar Sabbir" width="52" height="52" data-fallback="hide" />
+            <div>
+              <div class="hero-name">Md Abdullah Kaisar Sabbir</div>
+              <div class="hero-role">Flutter Developer | Mobile App Developer</div>
+            </div>
+          </div>
+
+          <h1>I ship Flutter apps to Google Play and the App Store, used by 12,000+ people.</h1>
+
+          <p class="hero-sub">I'm a Flutter and mobile app developer in Chattogram with 2+ years of production
+            experience across healthcare, education and business apps. I handle the work from first screen to store
+            release and maintenance.</p>
+
+          <div class="hero-actions">
+            <a href="#work" class="btn btn-primary">See my apps</a>
+            <a href="mailto:sabbir.abdullah.dev@gmail.com" class="btn btn-line">Email me</a>
+          </div>
+
+          <p class="status">Available for new opportunities</p>
+        </div>
+
+        <div class="phones" aria-hidden="true">
+          <figure class="phone p1" data-name="Parkview Appointment">
+            <img src="https://play-lh.googleusercontent.com/kZ_pAaBr0NP8vL8A72-k-j-1xsUl10Eg6-KCKXUdT-CvvfD1WDCfZMuYT02HuCirWug=w480-h960-rw" alt="" data-fallback="broken" />
+          </figure>
+          <figure class="phone p2" data-name="NeuroCheck Pro">
+            <img src="https://play-lh.googleusercontent.com/32-yGg2j-0kcqo8cSaOZYLmW4yAi1pVgNDOV8bzQeakeqyIXZTHHNV6XJOA23VUf-P6BhcYzpJpXHGaJnlXbFDo=w480-h960-rw" alt="" data-fallback="broken" />
+          </figure>
+          <figure class="phone p3" data-name="Al Hasanain">
+            <img src="https://play-lh.googleusercontent.com/MuMSE0frXIeQ3gLrqRdYXueI3EVNhBUT9Om1Xn1Js_716H9qx32l10ZXzG1jIiy8ZEY=w480-h960-rw" alt="" data-fallback="broken" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACTS -->
+    <div class="facts">
+      <div class="wrap facts-grid">
+        <div class="fact"><b>2+ years</b><span>Professional Flutter and mobile development</span></div>
+        <div class="fact"><b>5+ apps</b><span>Published on Google Play and the App Store</span></div>
+        <div class="fact"><b>12,000+</b><span>Users across those apps</span></div>
+        <div class="fact"><b>99.97%</b><span>Crash-free users, a 0.03% crash rate</span></div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="wrap split">
+        <div class="split-head">
+          <h2>I care about apps that stay easy to change.</h2>
+          <img class="portrait"
+            src="https://raw.githubusercontent.com/SabbirAbdullah/my_portfolio/refs/heads/main/assets/profilecover.jpg"
+            alt="Md Abdullah Kaisar Sabbir" loading="lazy" data-fallback="hide" />
+        </div>
+        <div class="about-text">
+          <p>I'm a <strong>Flutter developer and mobile app developer</strong> based in Chattogram, Bangladesh, with
+            2+ years of professional experience building Android and iOS apps in Flutter and Kotlin.</p>
+          <p>At <strong>mPair Technologies Ltd.</strong> I joined as an intern in August 2024 and now own delivery for
+            production apps in healthcare, education, appointment booking, inventory and payments: UI, API
+            integration, testing, store release and maintenance.</p>
+          <p>My code leans on clean architecture, predictable state management (BLoC, GetX, Riverpod) and reusable
+            components, so a feature added next year is as easy as one added today. I also build the Node.js APIs
+            behind the apps when a project needs them.</p>
+          <div class="link-row">
+            <a class="text-link" href="https://github.com/SabbirAbdullah" target="_blank" rel="noopener">GitHub</a>
+            <a class="text-link" href="https://www.linkedin.com/in/sabbir-abdullah/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="text-link" href="mailto:sabbir.abdullah.dev@gmail.com">Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="wrap split">
+        <div class="split-head">
+          <h2>Skills</h2>
+          <p class="lede">What I use day to day. Bold items are the ones I reach for first.</p>
+        </div>
+        <dl class="skill-groups">
+          <div class="skill-group">
+            <dt>Languages and frameworks</dt>
+            <dd><ul class="skill-list"><li class="core">Flutter</li><li class="core">Dart</li><li class="core">Kotlin</li><li>Android</li><li>iOS</li></ul></dd>
+          </div>
+          <div class="skill-group">
+            <dt>State and architecture</dt>
+            <dd><ul class="skill-list"><li class="core">BLoC</li><li class="core">Clean Architecture</li><li>GetX</li><li>Riverpod</li><li>Provider</li><li>MVVM</li></ul></dd>
+          </div>
+          <div class="skill-group">
+            <dt>APIs and services</dt>
+            <dd><ul class="skill-list"><li class="core">REST APIs</li><li>GraphQL</li><li>Dio</li><li>JWT authentication</li><li class="core">Firebase</li><li>FCM push notifications</li><li>Payment gateways</li></ul></dd>
+          </div>
+          <div class="skill-group">
+            <dt>Data and backend</dt>
+            <dd><ul class="skill-list"><li>Node.js</li><li>Express.js</li><li class="core">PostgreSQL</li><li>MySQL</li><li>MongoDB</li><li>Hive</li><li>SharedPreferences</li></ul></dd>
+          </div>
+          <div class="skill-group">
+            <dt>Testing and release</dt>
+            <dd><ul class="skill-list"><li>Unit, widget and integration testing</li><li>Google Play Console</li><li>App Store Connect</li><li>GitHub Actions</li></ul></dd>
+          </div>
+          <div class="skill-group">
+            <dt>Tools</dt>
+            <dd><ul class="skill-list"><li>Git</li><li>Android Studio</li><li>Xcode</li><li>VS Code</li><li>Postman</li></ul></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="work-head">
+          <h2>Selected work</h2>
+          <p class="lede">Apps live on the stores, then open-source projects with the code on GitHub.</p>
+        </div>
+
+        <h3 class="sub-title">Live on the stores</h3>
+        <div class="apps">
+          <article class="app lg">
+            <div class="shot" data-name="Parkview Appointment">
+              <img src="https://play-lh.googleusercontent.com/kZ_pAaBr0NP8vL8A72-k-j-1xsUl10Eg6-KCKXUdT-CvvfD1WDCfZMuYT02HuCirWug=w480-h960-rw" alt="Parkview Appointment app screenshot" loading="lazy" data-fallback="broken" />
+            </div>
+            <div class="app-body">
+              <h4>Parkview Appointment</h4>
+              <p>Hospital appointment app for booking doctor visits at Parkview, with real-time schedules, alerts and a full booking history.</p>
+              <div class="stack">Flutter, Firebase, GetX, REST API</div>
+              <div class="stores">
+                <a class="store" href="https://play.google.com/store/apps/details?id=com.appointment.parkview.parkviewappointment" target="_blank" rel="noopener" aria-label="Parkview Appointment on Google Play">Google Play</a>
+                <a class="store" href="https://apps.apple.com/us/app/parkview-appointment/id1660447155" target="_blank" rel="noopener" aria-label="Parkview Appointment on the App Store">App Store</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="app lg">
+            <div class="shot" data-name="NeuroCheck Pro">
+              <img src="https://play-lh.googleusercontent.com/32-yGg2j-0kcqo8cSaOZYLmW4yAi1pVgNDOV8bzQeakeqyIXZTHHNV6XJOA23VUf-P6BhcYzpJpXHGaJnlXbFDo=w480-h960-rw" alt="NeuroCheck Pro app screenshot" loading="lazy" data-fallback="broken" />
+            </div>
+            <div class="app-body">
+              <h4>NeuroCheck Pro</h4>
+              <p>Mental health assessment app for structured digital psychological evaluations, patient management and progress tracking.</p>
+              <div class="stack">Flutter, BLoC, REST API, Clean Architecture</div>
+              <div class="stores">
+                <a class="store" href="https://play.google.com/store/apps/details?id=com.neurocheckpro.neurocheckpro_b2c" target="_blank" rel="noopener" aria-label="NeuroCheck Pro on Google Play">Google Play</a>
+                <a class="store" href="https://apps.apple.com/gb/app/neurocheck-pro/id6764033486" target="_blank" rel="noopener" aria-label="NeuroCheck Pro on the App Store">App Store</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="app">
+            <div class="shot" data-name="Al Hasanain">
+              <img src="https://play-lh.googleusercontent.com/MuMSE0frXIeQ3gLrqRdYXueI3EVNhBUT9Om1Xn1Js_716H9qx32l10ZXzG1jIiy8ZEY=w480-h960-rw" alt="Al Hasanain app screenshot" loading="lazy" data-fallback="broken" />
+            </div>
+            <div class="app-body">
+              <h4>Al Hasanain</h4>
+              <p>School management app that gives parents and students academic info, schedules, online payments and push notifications.</p>
+              <div class="stack">Flutter, Firebase, GetX, SQL</div>
+              <div class="stores">
+                <a class="store" href="https://play.google.com/store/apps/details?id=com.alhasanain.studant.parents.app.alhasanain_app" target="_blank" rel="noopener" aria-label="Al Hasanain on Google Play">Google Play</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="app">
+            <div class="shot" data-name="Rooh School">
+              <img src="https://play-lh.googleusercontent.com/FTKVD2ODqNKDmUsWGMUq5IBvmClXFwUisCZtScl23gMKYdTg8EnLMH8nhGOvMF5m4o8ADvAcKcdg3vmTlJK8_h8=w480-h960-rw" alt="Rooh School app screenshot" loading="lazy" data-fallback="broken" />
+            </div>
+            <div class="app-body">
+              <h4>Rooh School</h4>
+              <p>School app connecting parents and students with academic information, schedules and real-time push notifications.</p>
+              <div class="stack">Flutter, Firebase, GetX, SQL</div>
+              <div class="stores">
+                <a class="store" href="https://play.google.com/store/apps/details?id=com.rooh_school.app&hl=en" target="_blank" rel="noopener" aria-label="Rooh School on Google Play">Google Play</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="app">
+            <div class="shot" data-name="QREX">
+              <img src="https://play-lh.googleusercontent.com/Dsqq7y0AOhEdDNNJqpW9q1yFdJhbYNpw2XdbKTOJmWSOWZxfGBVYVJPLTL_8fkul2vOExgY1L79Sk54k_41G=w480-h960-rw" alt="QREX app screenshot" loading="lazy" data-fallback="broken" />
+            </div>
+            <div class="app-body">
+              <h4>QREX</h4>
+              <p>Doctor appointment app that lets patients find a doctor and book a visit quickly from their phone.</p>
+              <div class="stack">Flutter, SQL</div>
+              <div class="stores">
+                <a class="store" href="https://play.google.com/store/apps/details?id=com.docappoint.app&hl=en" target="_blank" rel="noopener" aria-label="QREX on Google Play">Google Play</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="sub-title second">Open source and personal projects</h3>
+        <ul class="repos">
+          <li class="repo">
+            <div class="thumb"><img src="https://opengraph.githubassets.com/1/SabbirAbdullah/task_manager_backend" alt="Task Manager Backend repository preview" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>Task Manager Backend</h4>
+              <p>Production-ready REST API with JWT auth, user management, secure CRUD operations and PostgreSQL.</p>
+              <div class="stack">Node.js, Express.js, PostgreSQL, JWT</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/task_manager_backend" target="_blank" rel="noopener" aria-label="Task Manager Backend source code">Source code</a>
+          </li>
+          <li class="repo">
+            <div class="thumb"><img src="https://github.com/user-attachments/assets/236a3596-1277-44f8-b635-6239f007e26a" alt="Smart Inventory and POS screenshot" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>Smart Inventory &amp; POS</h4>
+              <p>Point-of-sale app with QR scanning, online payments and automatic inventory tracking.</p>
+              <div class="stack">Flutter, BLoC, Clean Architecture</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/smart_inventory_pos_sys" target="_blank" rel="noopener" aria-label="Smart Inventory and POS source code">Source code</a>
+          </li>
+          <li class="repo">
+            <div class="thumb"><img src="https://github.com/user-attachments/assets/c4d6884e-18bc-4b09-abaa-7303931efde4" alt="WeatherForecast screenshot" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>WeatherForecast</h4>
+              <p>Native Android weather app with real-time, location-based forecasts.</p>
+              <div class="stack">Kotlin, Hilt, Retrofit, Clean Architecture</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/weather_forecast_kotlin/" target="_blank" rel="noopener" aria-label="WeatherForecast source code">Source code</a>
+          </li>
+          <li class="repo">
+            <div class="thumb"><img src="https://github.com/user-attachments/assets/2ffc83a7-0ff0-43b5-8790-69f5245106b0" alt="E-commerce app screenshot" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>E-commerce App</h4>
+              <p>Shopping app with a product catalog, cart, Firebase auth, order history and checkout.</p>
+              <div class="stack">Flutter, Firebase, Provider</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/shopping_app" target="_blank" rel="noopener" aria-label="E-commerce app source code">Source code</a>
+          </li>
+          <li class="repo">
+            <div class="thumb"><img src="https://github.com/user-attachments/assets/ed05a652-6e61-4208-9fbc-65bb1b81519b" alt="AI Assistant screenshot" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>AI Assistant</h4>
+              <p>Voice and text assistant with natural language understanding for instant answers.</p>
+              <div class="stack">Flutter, BLoC, AI integration</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/AI-Assistant-App" target="_blank" rel="noopener" aria-label="AI Assistant source code">Source code</a>
+          </li>
+          <li class="repo">
+            <div class="thumb"><img src="https://github.com/user-attachments/assets/db0a6c9f-0629-4a84-a215-46e34ea4caab" alt="Tic Tac Toe screenshot" loading="lazy" data-fallback="broken" /></div>
+            <div class="repo-main">
+              <h4>Tic Tac Toe</h4>
+              <p>Polished game with responsive custom sizing, a modular structure and sound design.</p>
+              <div class="stack">Flutter, GetX, custom widgets</div>
+            </div>
+            <a class="text-link" href="https://github.com/SabbirAbdullah/tic_tac_toc" target="_blank" rel="noopener" aria-label="Tic Tac Toe source code">Source code</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="wrap split">
+        <div class="split-head">
+          <h2>Experience</h2>
+          <p class="lede">From intern to Mobile Application Developer in about nine months, building production apps used by thousands of people across Bangladesh.</p>
+        </div>
+
+        <div>
+          <div class="org">
+            <h3>mPair Technologies Ltd.</h3>
+            <span>Aug 2024 – Present</span>
+          </div>
+          <p class="place">Chattogram, Bangladesh</p>
+
+          <ol class="timeline">
+            <li class="role current">
+              <div class="role-head"><h4>Mobile Application Developer</h4><span>May 2025 – Present</span></div>
+              <ul>
+                <li>Own Flutter app delivery from setup and UI through API integration, testing, release and maintenance for 5+ published Android and iOS apps used by 12,000+ users.</li>
+                <li>Build responsive interfaces and reusable components for healthcare, education, appointment booking, attendance, inventory, payments and business-management workflows.</li>
+                <li>Integrate REST and GraphQL APIs and third-party services with Dio, including JWT authentication and payment gateways, using BLoC, GetX, Riverpod, Clean Architecture and MVVM as each project needs.</li>
+                <li>Set up Firebase and FCM push notifications, with SharedPreferences, Hive and SQL for local persistence.</li>
+                <li>Test with unit, widget, integration and manual checks, reaching a 0.03% crash rate (99.97% crash-free users).</li>
+                <li>Build, sign, publish and maintain apps on Google Play and the App Store, using GitHub Actions for release builds where it fits.</li>
+                <li>Work with backend developers and designers in agile sprints, keeping quality up through code reviews, testing and documentation.</li>
+              </ul>
+            </li>
+            <li class="role">
+              <div class="role-head"><h4>Junior Application Developer</h4><span>Nov 2024 – May 2025</span></div>
+              <ul>
+                <li>Implemented Flutter UI screens, integrated backend APIs and supported workflows for education, healthcare and appointment-based apps.</li>
+                <li>Worked with teammates to troubleshoot issues, refine features and prepare production-ready builds.</li>
+              </ul>
+            </li>
+            <li class="role">
+              <div class="role-head"><h4>Mobile Application Intern</h4><span>Aug 2024 – Oct 2024</span></div>
+              <ul>
+                <li>Learned the team's Flutter codebase and release workflow, and contributed UI and feature work under senior developers.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="edu">
+            <h4>B.Sc. in Computer Science &amp; Engineering</h4>
+            <p>Port City International University, Chittagong. 2019 – 2023. CGPA 3.34 / 4.00.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <h2>Have an app to build, or a team to join?</h2>
+          <p class="lede">Send a short note about the project or role and I'll reply by email.</p>
+          <div class="email-line">
+            <a class="email-big" href="mailto:sabbir.abdullah.dev@gmail.com">sabbir.abdullah.dev@gmail.com</a>
+            <button class="copy" type="button" id="copyBtn" data-email="sabbir.abdullah.dev@gmail.com">Copy email</button>
+          </div>
+        </div>
+        <ul class="contact-list">
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/sabbir-abdullah/" target="_blank" rel="noopener">sabbir-abdullah</a></li>
+          <li><span>GitHub</span><a href="https://github.com/SabbirAbdullah" target="_blank" rel="noopener">SabbirAbdullah</a></li>
+          <li><span>Phone</span><a href="tel:+8801518931587">+880 151 893 1587</a></li>
+          <li><span>Location</span><span style="color:var(--text)">Chattogram, Bangladesh</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 Md Abdullah Kaisar Sabbir</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <span class="sr-only" id="copyStatus" role="status" aria-live="polite"
+    style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></span>
+
+  <script>
+    (function () {
+      // Header: background after scroll
+      var header = document.getElementById('header');
+      function onScroll() { header.classList.toggle('scrolled', window.scrollY > 20); }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Mobile menu
+      var btn = document.getElementById('menuBtn');
+      var links = document.getElementById('navLinks');
+      function setMenu(open) {
+        links.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      }
+      btn.addEventListener('click', function () { setMenu(!links.classList.contains('open')); });
+      links.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+      // Active nav link
+      var map = {};
+      links.querySelectorAll('a[href^="#"]').forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && map[en.target.id]) {
+            Object.keys(map).forEach(function (k) { map[k].classList.remove('active'); });
+            map[en.target.id].classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(map).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+
+      // Image fallbacks: a failed image never leaves a broken icon behind
+      function markBroken(img) {
+        var mode = img.getAttribute('data-fallback');
+        if (mode === 'hide') { img.style.display = 'none'; return; }
+        var host = img.closest('.phone, .shot, .thumb');
+        if (host) { host.classList.add('broken'); if (!host.dataset.name) host.dataset.name = ''; }
+      }
+      document.querySelectorAll('img[data-fallback]').forEach(function (img) {
+        img.addEventListener('error', function () { markBroken(img); });
+        if (img.complete && img.naturalWidth === 0) markBroken(img);
+      });
+
+      // Copy email
+      var copyBtn = document.getElementById('copyBtn');
+      var status = document.getElementById('copyStatus');
+      copyBtn.addEventListener('click', function () {
+        var email = copyBtn.getAttribute('data-email');
+        function done() {
+          copyBtn.textContent = 'Copied';
+          status.textContent = 'Email address copied';
+          setTimeout(function () { copyBtn.textContent = 'Copy email'; status.textContent = ''; }, 2000);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(done, function () { window.location.href = 'mailto:' + email; });
+        } else {
+          window.location.href = 'mailto:' + email;
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
