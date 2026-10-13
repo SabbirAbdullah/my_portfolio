@@ -132,6 +132,77 @@
     .menu-btn[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
     .menu-btn[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
 
+
+/* ---------- Mobile Header Fix ---------- */
+@media (max-width: 768px) {
+  .nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: auto;
+  }
+
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    padding: 0;
+    position: relative;
+    z-index: 52;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgb(0 0 0 / 12%);
+    z-index: 51;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.85rem 0.9rem;
+    border: 0;
+    border-radius: 8px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    background: var(--surface-2);
+  }
+
+  .nav-links a.nav-cta {
+    margin-top: 0.35rem;
+    text-align: center;
+  }
+}
+
     /* ---------- Buttons ---------- */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
