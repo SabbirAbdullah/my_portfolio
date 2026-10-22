@@ -649,6 +649,223 @@
 
 /* Education & Research Layout */
 
+
+/* ---------- Research & Thesis: Published Edition ---------- */
+
+.thesis {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.thesis-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.thesis-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.thesis-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.thesis-top {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Published status */
+.thesis-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #299764;
+  box-shadow: 0 0 0 3px rgb(41 151 100 / 12%);
+}
+
+/* Research description */
+.thesis h3 {
+  max-width: 680px;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+}
+
+.thesis-description {
+  max-width: 650px;
+  font-size: 0.92rem;
+  line-height: 1.8;
+}
+
+/* Research tags */
+.thesis-footer {
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+}
+
+.thesis-tag {
+  border-radius: 999px;
+  padding: 0.4rem 0.7rem;
+}
+
+/* Publication details */
+.thesis-publication {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+}
+
+.publication-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.publication-label {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.publication-name {
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.publication-doi {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* External publication link */
+.thesis-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.thesis-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.thesis-link:hover {
+  background: var(--surface);
+  border-color: var(--text);
+  transform: translateY(-1px);
+}
+
+.thesis-link:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 760px) {
+  .thesis-publication {
+    align-items: flex-start;
+  }
+
+  .thesis-link {
+    align-self: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .thesis-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .thesis-publication {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .thesis-link {
+    width: 100%;
+    align-self: stretch;
+  }
+
+  .publication-doi {
+    font-size: 0.74rem;
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .thesis-link {
+    transition: none;
+  }
+
+  .thesis-link:hover {
+    transform: none;
+  }
+}
+
+
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1453,11 +1670,34 @@
     </div>
   </section>
 
-  <!-- Research & Thesis -->
+    <!-- Research & Thesis -->
   <section class="thesis" aria-labelledby="thesis-title">
     <div class="thesis-top">
-      <div class="thesis-label">Research &amp; Thesis</div>
-      <span class="thesis-status">Unpublished</span>
+      <div class="thesis-heading">
+        <span class="thesis-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 3 20 7.5 12 12 4 7.5 12 3Z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path
+              d="m4 12 8 4.5 8-4.5M4 16.5 12 21l8-4.5"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+
+        <div class="thesis-label">Research &amp; Thesis</div>
+      </div>
+
+      <span class="thesis-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        Published Research
+      </span>
     </div>
 
     <h3 id="thesis-title">
@@ -1465,13 +1705,44 @@
     </h3>
 
     <p class="thesis-description">
-      Academic research exploring deep learning techniques
-      for lung cancer stage classification.
+      Academic research exploring deep learning techniques for lung cancer
+      stage classification, contributing to the application of AI in medical
+      image analysis.
     </p>
 
     <div class="thesis-footer">
       <span class="thesis-tag">Deep Learning</span>
       <span class="thesis-tag">Medical AI</span>
+      <span class="thesis-tag">Research</span>
+    </div>
+
+    <div class="thesis-publication">
+      <div class="publication-info">
+        <span class="publication-label">Research repository</span>
+        <span class="publication-name">Zenodo</span>
+        <span class="publication-doi">
+          DOI: 10.5281/zenodo.23562597
+        </span>
+      </div>
+
+      <a
+        class="thesis-link"
+        href="https://doi.org/10.5281/zenodo.23562597"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="View Lung Cancer Stage Classification Using Deep Learning on Zenodo"
+      >
+        View publication
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M7 17 17 7M8 7h9v9"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
     </div>
   </section>
 
